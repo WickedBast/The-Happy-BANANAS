@@ -8,7 +8,7 @@ using System.Text;
 
 namespace HB.Repository.Repository.Application
 {
-    class UserRepository : BaseRepository<User>, IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public UserRepository(ApplicationContext context) : base(context)
         {
