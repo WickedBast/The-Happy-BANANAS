@@ -8,7 +8,7 @@ using System.Text;
 
 namespace HB.Repository.Repository.Application
 {
-    class RoomImageRepository : BaseRepository<RoomImage>, IRoomImageRepository
+    public class RoomImageRepository : BaseRepository<RoomImage>, IRoomImageRepository
     {
         public RoomImageRepository(ApplicationContext context) : base(context)
         {
