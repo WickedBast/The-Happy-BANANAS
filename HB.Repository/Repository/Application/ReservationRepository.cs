@@ -8,7 +8,7 @@ using System.Text;
 
 namespace HB.Repository.Repository.Application
 {
-    class ReservationRepository : BaseRepository<Reservation>, IReservationRepository
+    public class ReservationRepository : BaseRepository<Reservation>, IReservationRepository
     {
         public ReservationRepository(ApplicationContext context) : base(context)
         {
