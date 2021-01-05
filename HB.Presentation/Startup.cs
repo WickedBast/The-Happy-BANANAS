@@ -5,11 +5,15 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HB.Repository.Repository.Application;
+using HB.Repository.Interface.Application;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HB.Presentation
 {
@@ -27,10 +31,26 @@ namespace HB.Presentation
         {
             services.AddDbContext<ApplicationContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IExtraServiceRepository, ExtraServiceRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IRoomImageRepository, RoomImageRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options =>
+                    {
+                        options.LoginPath = "/Login/Index";
+                    });
 
+            services.AddSession();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddControllersWithViews();
+
+            services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,18 +66,71 @@ namespace HB.Presentation
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseAuthentication();
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
+                routes.MapRoute(
+                    name: "forgotpassword",
+                    template: "/forgot-password",
+                    defaults: new { controller = "ForgotPassword", action = "Index" });
+
+                routes.MapRoute(
+                 name: "register",
+                 template: "/register",
+                 defaults: new { controller = "Register", action = "SignUp" });
+
+                routes.MapRoute(
+                 name: "login",
+                 template: "/log-in",
+                 defaults: new { controller = "Login", action = "Login" });
+
+                routes.MapRoute(
+                 name: "account",
+                 template: "/my-profile",
+                 defaults: new { controller = "Account", action = "Index" });
+
+                routes.MapRoute(
+                 name: "signout",
+                 template: "/sign-out",
+                 defaults: new { controller = "Login", action = "Logout" });
+
+                routes.MapRoute(
+                 name: "contacts",
+                 template: "/contacts",
+                 defaults: new { controller = "Contact", action = "Index" });
+
+                routes.MapRoute(
+                    name: "reservation",
+                    template: "/reservation",
+                    defaults: new { controller = "Reservation", action = "Index" }
+                    );
+
+                routes.MapRoute(
+                    name: "reservationDetail",
+                    template: "/reservation/{slug}",
+                    defaults: new { controller = "Reservation", action = "Detail" }
+                    );
+
+                routes.MapRoute(
+                    name: "roomDetail",
+                    template: "/room/{slug}",
+                    defaults: new { controller = "Room", action = "Detail" }
+                    );
+
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
