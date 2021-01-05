@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HB.DAL\HB.DAL.csproj" />
+    <ProjectReference Include="..\HB.Repository\HB.Repository.csproj" />
   </ItemGroup>
 
 </Project>
