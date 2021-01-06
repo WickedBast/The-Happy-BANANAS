@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using HB.Repository.Repository.Application;
 using HB.Repository.Interface.Application;
 using Microsoft.AspNetCore.Mvc;
+using SixLabors.ImageSharp.Web.DependencyInjection;
 
 namespace HB.Presentation
 {
@@ -44,6 +45,7 @@ namespace HB.Presentation
                         options.LoginPath = "/Login/Index";
                     });
 
+            services.AddImageSharp();
             services.AddSession();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
@@ -76,6 +78,8 @@ namespace HB.Presentation
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseImageSharp();
 
 
             app.UseMvc(routes =>
