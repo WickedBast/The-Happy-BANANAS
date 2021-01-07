@@ -66,7 +66,7 @@ namespace HB.Core.Security
             }
             return Text;
         }
-        public static string GenerateKey(int passwordLength, bool OnlyNumbers = false)
+        public  string GenerateKey(int passwordLength, bool OnlyNumbers = false)
         {
             var chars = "ABCDEFGHIJKLMNOPRSTUVYZ0123456789";
 
