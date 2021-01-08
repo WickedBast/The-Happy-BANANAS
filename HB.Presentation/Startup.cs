@@ -129,7 +129,31 @@ namespace HB.Presentation
                 routes.MapRoute(
                     name: "roomDetail",
                     template: "/room/{slug}",
-                    defaults: new { controller = "Room", action = "Detail" }
+                    defaults: new { controller = "RoomDetail", action = "Index" }
+                    );
+
+                routes.MapRoute(
+                    name: "payment",
+                    template: "/payment",
+                    defaults: new { controller = "Payment", action = "Index" }
+                    );
+
+                routes.MapRoute(
+                    name: "reservationHistory",
+                    template: "/history",
+                    defaults: new { controller = "History", action = "Index" }
+                    );
+
+                routes.MapRoute(
+                    name: "extraService",
+                    template: "/extraService",
+                    defaults: new { controller = "ExtraService", action = "Index" }
+                    );
+
+                routes.MapRoute(
+                    name: "comment",
+                    template: "/comment",
+                    defaults: new { controller = "Comment", action = "Index" }
                     );
 
                 routes.MapRoute(
