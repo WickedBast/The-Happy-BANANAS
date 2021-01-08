@@ -30,14 +30,14 @@
                 <a href="@Url.Action("Index","History")" class="right">Reservation History</a>
 
                 <div class="vertical-menu 1">
-                    <a href="@Url.Action("Index","Account")" class="right active">Account (@User.Claims.FirstOrDefault(x => x.Type == "Name").Value)</a>
-                    <a href="@Url.Action("Logout","Login")" class="right">SignOut</a>
+                    <a href="@Url.Action("Index","Account")" class="right active"> Hello (@User.Claims.FirstOrDefault(x => x.Type == "Name").Value) </a>
+                    <a href="@Url.Action("Logout","Login")" class="right">Sign Out</a>
                 </div>
             }
             else
             {
-                <a href="@Url.Action("Index","Register")" class="right">SignUp</a>
-                <a href="@Url.Action("Index","Login")" class="right ">Signin</a>
+                <a href="@Url.Action("SignUp","Register")" class="right">SignUp</a>
+                <a href="@Url.Action("Login","Login")" class="right ">Signin</a>
             }
 
 
