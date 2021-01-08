@@ -1,5 +1,85 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model HB.Entity.Application.User
+
 @{
+    ViewData["Title"] = "Account";
 }
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+    <title>Account</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/Account.css">
+</head>
+
+
+<body>
+
+    <center>
+        <h1> Account</h1>
+    </center>
+
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
+
+                @if (TempData["Info"] != null)
+                {
+                    <p class="alert-light"> @TempData["Info"]<span class="close-alert"></span> </p>
+                }
+
+
+
+                <form action="@Url.Action("Update","Account")" method="post" id="registrationForm">
+
+                    <div class="row">
+                        <div class="col-50">
+                            <h3> </h3>
+                            <label for="fname"><i class="fa fa-user"></i>  Name</label>
+                            <input type="text" class="form-control" name="txtFirstName" id="first_name" value="@Model.Name" disabled />
+
+                            <label for="fname"><i class="fa fa-user"></i> SurName</label>
+                            <input type="text" class="form-control" name="txtLastName" id="last_name" value="@Model.Surname" disabled />
+
+                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                            <input type="email" class="form-control" name="txtEmail" id="email" value="@Model.Email"/>
+
+                            <label for="phonenum"><i class="fa fa-institution"></i> Phone Number</label>
+                            <input type="text" class="form-control" name="txtPhnNo" id="phone" placeholder="Phone Number" title="Enter your phone number if any.">
+
+                        </div>
+                        <div class="col-50">
+                            <h2></h2>
+
+                            <label for="passP"><i class="fa fa-address-card-o"></i> Güncel Password</label>
+                            <input type="password" class="form-control" name="txtPasswordP" id="passwordP" placeholder="Enter your current Password" title="Enter your active password.">
+
+                            <label for="pass"><i class="fa fa-address-card-o"></i> New Password</label>
+                            <input type="password" class="form-control" name="txtPassword" id="password" placeholder="Enter your new Password" title="Enter your active password.">
+
+                            <label for="passR"><i class="fa fa-address-card-o"></i> New Password Retry</label>
+                            <input type="password" class="form-control" name="txtPasswordR" id="password2" placeholder="Enter your new Password again" title="Enter your active password.">
+
+
+                            <br />
+
+                            <button class="btn btn-lg btn-success" type="submit" ><span> Save </span></button>
+                            <button class="btn btn-lg" type="reset"><span> Reset </span></button>
+                        </div>
+
+
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
