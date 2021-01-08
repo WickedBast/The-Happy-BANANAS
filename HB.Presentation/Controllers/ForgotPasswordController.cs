@@ -28,7 +28,7 @@ namespace HB.Presentation.Controllers
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> ForgotPassword(IFormCollection frm)
+		public async Task<IActionResult> Forgot(IFormCollection frm)
 		{
 			var Email = frm["txtEmail"];
 
