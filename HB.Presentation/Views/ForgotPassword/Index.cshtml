@@ -17,28 +17,28 @@
 </head>
 
 <body>
-    <form action="@Url.Action("Index","ForgotPassword")" id="contact-form" method="post" style="max-width:500px;margin:auto">
+    <form action="@Url.Action("Forgot","ForgotPassword")" id="contact-form" method="post" style="max-width:500px;margin:auto">
         <div class="container">
             <h1>Reset Password</h1>
             <hr>
 
             <label for="email"><b>Email</b></label>
-            <input required type="text" placeholder="Enter Email" name="email" title="*Enter your email address">
+            <input required type="text" placeholder="Enter Email" name="email" title="*Enter your email address" />
 
-            <br>
+            <br />
 
             <div class="clearfix">
                 <button type="submit" class="button"><span>Send Request</span></button>
             </div>
 
         </div>
-        <br>
+        <br />
         <p>
-            Don't have an account? &nbsp;&nbsp;  <a href="@Url.Action("Index", "Register")" style="color:Indigo"><u>     Sign Up </u></a>
+            Don't have an account? &nbsp;&nbsp;  <a href="@Url.Action("SignUp", "Register")" style="color:Indigo"><u>     Sign Up </u></a>
         </p>
 
         <p>
-            Return to Sign in Page  &nbsp;&nbsp;   <a href="@Url.Action("Index", "Login")" style="color:Indigo"> <u>   Sign In</u></a>
+            Return to Sign in Page  &nbsp;&nbsp;   <a href="@Url.Action("Login", "Login")" style="color:Indigo"> <u>   Sign In</u></a>
         </p>
 
     </form>
