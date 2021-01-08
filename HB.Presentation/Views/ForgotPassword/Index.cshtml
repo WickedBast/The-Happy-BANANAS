@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Forgot Password";
+}
+
+<!DOCTYPE html>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+    <title>Forgot Password</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/Login.css">
+</head>
+
+<body>
+    <form action="@Url.Action("Index","ForgotPassword")" id="contact-form" method="post" style="max-width:500px;margin:auto">
+        <div class="container">
+            <h1>Reset Password</h1>
+            <hr>
+
+            <label for="email"><b>Email</b></label>
+            <input required type="text" placeholder="Enter Email" name="email" title="*Enter your email address">
+
+            <br>
+
+            <div class="clearfix">
+                <button type="submit" class="button"><span>Send Request</span></button>
+            </div>
+
+        </div>
+        <br>
+        <p>
+            Don't have an account? &nbsp;&nbsp;  <a href="@Url.Action("Index", "Register")" style="color:Indigo"><u>     Sign Up </u></a>
+        </p>
+
+        <p>
+            Return to Sign in Page  &nbsp;&nbsp;   <a href="@Url.Action("Index", "Login")" style="color:Indigo"> <u>   Sign In</u></a>
+        </p>
+
+    </form>
+
+</body>
+
+</html>
