@@ -1,4 +1,5 @@
 ﻿@{
+    ViewData["Title"] = "Register";
 }
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@
         <a href="Login.html" class="right ">Signin</a>
     </div>
 
-    <form action="/action_page.php" style="max-width:500px;margin:auto">
+    <form action="@Url.Action("SignUp","Register")" style="max-width:500px;margin:auto">
         <div class="container">
 
             <h1>Sign Up</h1>
@@ -52,7 +53,7 @@
             <label for="psw_ag">Password Again</label>
             <input type="password" id="psw_ag" name="psw_ag" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" required>
 
-            <p>Do you have an account?  <a href="Login.html" style="color:Indigo"><u>Sign in  </u></a></p>
+            <p>Do you have an account?  <a href="@Url.Action("Login", "Login")" style="color:Indigo"><u>Sign in  </u></a></p>
             <div class="clearfix">
 
                 <input type="submit" formaction="HomePage.html" value="Sign Up">
