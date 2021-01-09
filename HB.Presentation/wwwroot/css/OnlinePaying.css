@@ -1,14 +1,16 @@
 .title {
 	padding: 20px;
 	text-align: center;
-	background: White;
+	background: Lavender;
 	color: Indigo;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  color = Indigo
+  color :Indigo;
+  background: Lavender;
+ 
 }
 
 .header {
@@ -169,7 +171,7 @@ padding: 10px;
 }
 
 .container {
-  background-color: #f2f2f2;
+  background-color: Lavender;
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
   border-radius: 3px;
@@ -230,14 +232,47 @@ center {
 	font-size: 18px;
 }
 
-footer {
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 1px;
-  background: Indigo;
-  text-align: right;
-  color: Lavender;
-  font-size: 10px;
+
+.fa {
+  padding: 20px;
+  font-size: 20px;
+  width: 10px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
 }
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+.footer {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0.1 px;
+    font-size: 10px;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background: Indigo;
+   color: white;
+   text-align: center;
+}
+
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
 @media (max-width: 800px) {
