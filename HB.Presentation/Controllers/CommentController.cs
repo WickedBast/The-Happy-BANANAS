@@ -24,8 +24,7 @@ namespace HB.Presentation.Controllers
 
 		public IActionResult Index()
 		{
-			var comment = commentRepo.GetAll();
-			return View(comment);
+			return View();
 		}
 
 		[HttpPost]
