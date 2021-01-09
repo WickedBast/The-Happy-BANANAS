@@ -13,6 +13,8 @@ namespace HB.Entity.Application
 
         public int PersonCapacity { get; set; }
 
+        public int Price { get; set; }
+
         public virtual IList<RoomImage> RoomImages { get; set; }
 
         public virtual IList<Reservation> Reservations { get; set; }
