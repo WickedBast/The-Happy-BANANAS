@@ -11,7 +11,7 @@ using HB.Presentation.Code;
 
 namespace HB.Presentation.Controllers
 {
-	public class AccountController : Controller
+	public class AccountController : BaseController
 	{
 		private readonly IUserRepository userRepo;
 
