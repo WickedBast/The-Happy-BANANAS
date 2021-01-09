@@ -1,5 +1,59 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+
 }
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+    <div class="header">
+        <a href="HomePage.html">
+            <img src="logo.png" href="HomePage.html" alt="logo" width="180px" height="130px">
+    </div>
+
+    <div class="vertical-menu">
+        <a href="Reservation.html">Reservations</a>
+        <a href="OurRooms.html">Our Rooms </a>
+        <a href="CommentsAboutUs.html">Comments About Us </a>
+        <a href="Contact.html">Contact </a>
+
+        <a href="SignUp.html" class="right">SignUp</a>
+        <a href="Login.html" class="right active">Signin</a>
+
+    </div>
+
+    <form action="/action_page.php" style="max-width:500px;margin:auto">
+        <div class="container">
+
+            <h1>Sign In</h1>
+            <p>Please fill in this form to enter your account.</p>
+            <hr>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email">
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
+            <p>
+                <a href="ForgotPassword.html" style="color:Indigo"> <u> Forgot Password? </u></a>
+            </p>
+            <a href="SignUp.html" style="color:Indigo"> <u> Don't you have an account? </u></a>.
+            </p>
+
+            <br></br>
+
+            <div class="clearfix">
+                <a href="HomePage.html" <button class="button"><span>Cancel</span></button></a>
+                <a href="Account.html"  <button class="button"><span>Signin</span></button></a>
+
+            </div>
+        </div>
+    </form>
+    <div id="message">
+        <h3>Password must contain the following:</h3>
+        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+        <p id="number" class="invalid">A <b>number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    </div>
