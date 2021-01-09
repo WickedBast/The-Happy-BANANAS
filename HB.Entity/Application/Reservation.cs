@@ -30,6 +30,8 @@ namespace HB.Entity.Application
 
         public virtual Room Room { get; set; }
 
+        public Boolean IsPaid { get; set; }
+
         public virtual IList<Comment> Comments { get; set; }
 
         public virtual User User { get; set; }
