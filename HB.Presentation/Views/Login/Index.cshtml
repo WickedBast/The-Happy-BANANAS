@@ -1,5 +1,5 @@
 ﻿@{
-
+    ViewData["Title"] = "Log In";
 }
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@
 
     </div>
 
-    <form action="/action_page.php" style="max-width:500px;margin:auto">
+    <form action="@Url.Action("Login","Login")" style="max-width:500px;margin:auto">
         <div class="container">
 
             <h1>Sign In</h1>
@@ -36,9 +36,9 @@
             <input type="password" placeholder="Enter Password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 
             <p>
-                <a href="ForgotPassword.html" style="color:Indigo"> <u> Forgot Password? </u></a>
+                <a href="@Url.Action("Index","ForgotPassword")" style="color:Indigo"> <u> Forgot Password? </u></a>
             </p>
-            <a href="SignUp.html" style="color:Indigo"> <u> Don't you have an account? </u></a>.
+            <a href="@Url.Action("Index","Register")" style="color:Indigo"> <u> Don't you have an account? </u></a>.
             </p>
 
             <br></br>
