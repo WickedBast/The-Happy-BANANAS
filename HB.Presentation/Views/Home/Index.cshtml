@@ -6,3 +6,72 @@
 }
 
 
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<html lang="en">
+<head>
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/General.css">
+
+</head>
+
+<body>
+
+    <p>
+        <center>
+            <section>
+                <img class="mySlides" src="/uploads/hotel3.jpg" style="float:right;width:1100px;height:500px">
+                <img class="mySlides" src="/uploads/hotel.jpg" style="float:right;width:1100px;height:500px">
+                <img class="mySlides" src="/uploads/hotel5.jpg" style="float:right;width:1100px;height:500px">
+                <img class="mySlides" src="/uploads/hotel8.jpg" style="float:right;width:1100px;height:500px">
+                <img class="mySlides" src="/uploads/h1.jpeg" style="float:right;width:1100px;height:500px">
+                <img class="mySlides" src="/uploads/h2.jpeg" style="float:right;width:1100px;height:500px">
+                <img class="mySlides" src="/uploads/h3.jpeg" style="float:right;width:1100px;height:500px">
+                <img class="mySlides" src="/uploads/h4.jpeg" style="float:right;width:1100px;height:500px">
+                <img class="mySlides" src="/uploads/h5.jpeg" style="float:right;width:1100px;height:500px">
+                <img class="mySlides" src="/uploads/h6.jpeg" style="float:right;width:1100px;height:500px">
+            </section>
+
+        </center>
+
+        <br />
+
+        <h3>  &nbsp;&nbsp; Our Hotel Facilities  &nbsp;&nbsp;</h3>
+        <br />
+
+        <h3> &nbsp;&nbsp;* Pool  </h3>
+        <h3>&nbsp;&nbsp;* Canoe  </h3>
+        <h3>&nbsp;&nbsp;* Live Music </h3>
+        <h3>&nbsp;&nbsp;* Fireplace  </h3>
+        <h3>&nbsp;&nbsp;* Table Games  </h3>
+        <br /> <br /> <br /> <br /> <br />
+
+
+    </p>
+    <script>
+	var myIndex = 0;
+	carousel();
+
+	function carousel() {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  for (i = 0; i < x.length; i++) {
+		x[i].style.display = "none";
+	  }
+	  myIndex++;
+	  if (myIndex > x.length) {myIndex = 1}
+	  x[myIndex-1].style.display = "block";
+	  setTimeout(carousel, 3000);
+	}
+    </script>
+
+</body>
+</html>
+
+
+
+
