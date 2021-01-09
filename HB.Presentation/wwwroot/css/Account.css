@@ -1,15 +1,15 @@
 .title {
 	padding: 20px;
 	text-align: center;
-	background: White;
+	background: Lavender;
 	color: Indigo;
 }
 
 body {
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0;
-	color: Indigo;
-	background: Lavender;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  color : Indigo;
+  background: Lavender;
 }
 
 .header {
@@ -34,38 +34,24 @@ body {
 }
 
 .mySlides{
-	padding: 10px;
-	height: 70vmin;
-    width: 150vmin;
-	text-align: right;
+padding: 10px;
 }
 
 .vertical-menu {
-  overflow: hidden;
-  background-color: Indigo;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-}
-
-.vertical-menu 1 {
-	float: left;
 	overflow: hidden;
 	background-color: Indigo;
 	position: sticky;
 	position: -webkit-sticky;
 	top: 0;
-	text-align: right;
-	position: right;
 }
 
 .vertical-menu a {
-  float: left;
-  display: block;
-  color: Lavender;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
+	float: left;
+	display: block;
+	color: Thistle;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
 }
 
 .img{
@@ -75,7 +61,7 @@ body {
 
 .accordion {
   background-color: #eee;
-  color: Indigo;
+  color: #444;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -87,13 +73,13 @@ body {
 }
 
 .active, .accordion:hover {
-  background-color: Thistle; 
+  background-color: #ccc; 
 }
 
 .panel {
   padding: 0 18px;
   display: none;
-  background-color: Indigo;
+  background-color: Lavender;
   overflow: hidden;
 }
 
@@ -108,9 +94,47 @@ body {
 
 .vertical-menu a.active {
   background-color: #666;
-  color: Indigo;
+  color: white;
 }
 
+.button {
+  border-radius: 4px;
+  background-color: Indigo;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 
 * {
   box-sizing: border-box;
@@ -171,45 +195,6 @@ label {
   font-size: 24px;
 }
 
-.button {
-  border-radius: 4px;
-  background-color: Indigo;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 20px;
-  padding: 10px;
-  width: 100px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
 .btn {
   background-color: #4CAF50;
   color: white;
@@ -239,6 +224,55 @@ span.price {
   color: grey;
 }
 
+center {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	color: Indigo;
+	font-size: 18px;
+}
+
+
+.fa {
+  padding: 20px;
+  font-size: 20px;
+  width: 10px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+.footer {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0.1 px;
+    font-size: 10px;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background: Indigo;
+   color: white;
+   text-align: center;
+}
+
+
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
 @media (max-width: 800px) {
   .row {
@@ -248,31 +282,6 @@ span.price {
     margin-bottom: 20px;
   }
 
-  
-center {
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0;
-	color: Indigo;
-	font-size: 18px;
-}
 
-form {
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0;
-	padding: 10px;
-	text-align: left;
-	color: Indigo;
-	font-size: 20px;
-}
 
-footer {
-	font-family: Arial, Helvetica, sans-serif;
-	padding: 1px;
-	background: Indigo;
-	text-align: right;
-	color: Lavender;
-	font-size: 10px;
-	bottom: 0;
-	width: 100%;
-	position:bottom;
-}
+ 
