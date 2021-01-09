@@ -49,7 +49,7 @@ namespace HB.Presentation.Controllers
 					CommentText = comment,
 					RateGiven = decimal.Parse(rateGiven) / (10),
 					UserID = CurrentUserID,
-					FullName = CurrentUserName + " " + CurrentUserLastName,
+					FullName = CurrentUserName + " " + CurrentUserLastName
 				});
 
 				TempData["Info"] = "Yorum işleminiz başarıyla sonuçlanmıştır.";
