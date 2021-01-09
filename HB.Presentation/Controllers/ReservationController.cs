@@ -67,7 +67,11 @@ namespace HB.Presentation.Controllers
 					EndDate = DateTime.Parse(endDate),
 					NumberOfPerson = Int32.Parse(numberOfPerson),
 					RoomCount = Int32.Parse(roomCount),
+<<<<<<< HEAD
 					//Room =,
+=======
+					//Room =
+>>>>>>> 330a82b4bebdec8090a273c5ddb7e48564536364
 					UserID = CurrentUserID
 				});
 			}
