@@ -32,6 +32,7 @@ namespace HB.Presentation.Models.Room
         public int PersonCapacity { get; set; }
         public string Type { get; set; }
         public RoomImage RoomImage { get; set; }
+        public int Cost { get; set; }
 
     }
 
