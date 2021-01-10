@@ -95,12 +95,12 @@ namespace HB.Presentation.Controllers
 				message.Subject = "PNR Number:";
 				message.Body = new TextPart("plain")
 				{
-					Text = "Rezervasyonunuz için PNR Numaranız:  " + reservation.PNRNumber
+					Text = "Rezervasyonunuz alınmıştır. Rezervasyonunuz için PNR Numaranız:  " + reservation.PNRNumber
 				};
 				using (var client = new SmtpClient())
 				{
 					client.Connect("smtp.gmail.com", 587, false);
-					client.Authenticate("alpnce@gmail.com", "");
+					client.Authenticate("hotelstar43@gmail.com", "happyBananas");
 					client.Send(message);
 					client.Disconnect(true);
 				}
