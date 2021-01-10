@@ -84,9 +84,9 @@ namespace HB.Presentation.Controllers
 			}
 			else
 			{
-				var PNRCode = new Cryptography().GenerateKey(6, true);
+				//var PNRCode = new Cryptography().GenerateKey(6, true);
+				var PNRCode = reservation.PNRNumber;
 				var user = userRepo.FirstOrDefaultBy(x => x.Id == CurrentUserID);
-				reservation.PNRNumber = PNRCode;
 				reservation.IsPaid = true;
 
 				var message = new MimeMessage();
