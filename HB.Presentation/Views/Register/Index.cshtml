@@ -41,10 +41,10 @@
             <label for="psw_ag">Password Again</label>
             <input type="password" id="psw_ag" name="txtPasswordRetry" placeholder="Enter your password again" title="*Enter your password again" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
 
-            <p>Do you have an account?  <a href="@Url.Action("Login", "Login")" style="color:Indigo"><u>Sign in </u></a></p>
+            <p>Do you have an account?  <a href="@Url.Action("Index", "Login")" style="color:Indigo"><u>Sign in </u></a></p>
             <div class="clearfix">
 
-                <input type="submit" formaction="@Url.Action("Index","Home")" value="Sign Up">
+                <input type="submit" formaction="@Url.Action("Index","Register")" value="Sign Up">
 
 
             </div>
