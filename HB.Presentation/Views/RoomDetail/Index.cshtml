@@ -1,3 +1,84 @@
-﻿@{
-    ViewData["Title"] = "Room Detail";
+﻿@model HB.Presentation.Models.Room.RoomVM
+
+@{
+    ViewData["Title"] = "Room Detail Page";
 }
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+    <title>Our Rooms</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/General.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+
+    <h2>Our Rooms</h2>
+
+    <center>
+        <!-- Portfolio Gallery Grid -->
+        <br>
+        <div class="row">
+
+            @foreach (var item in Model.Item)
+            {
+                <div class="column">
+                    <div class="content">
+                        <img src="@item.RoomImage" alt="Room-1" style="width:20%">
+                        <h3>@item.Type</h3>
+                        <p>Number of people(max): @item.PersonCapacity <br> Price: @item.Cost <br> </p>
+                    </div>
+                </div>
+                <br>
+            }
+
+
+        </div>
+    </center>
+
+</body>
+
+</html>
+
+<script>
+
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) { myIndex = 1 }
+        x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 3000);
+    }
+</script>
+
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+
