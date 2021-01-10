@@ -12,13 +12,16 @@ namespace HB.Presentation.Models.Reservation
         {
             Item = new List<ReservationMM>();
             Items = new List<ReservationMM>();
+            Res = new ReservationMM();
         }
 
         public List<ReservationMM> Item { get; set; }
         public List<ReservationMM> Items { get; set; }
+        public ReservationMM Res { get; set; }
         public int TotalCount { get; set; }
         public int PageCount { get; set; }
         public int CurrentPage { get; set; }
+
 
     }
 
@@ -46,6 +49,13 @@ namespace HB.Presentation.Models.Reservation
         public string Detail { get; set; }
         public UserMM User { get; set; }
         public string Slug { get; set; }
+        public int NumberOfPerson { get; set; }
+        public int RoomCount { get; set; }
+        public decimal Cost { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int Night { get; set; }
+
     }
 
     public class ReservationDetailMM
