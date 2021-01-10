@@ -31,7 +31,7 @@ namespace HB.Presentation.Controllers
 		public IActionResult Comment(IFormCollection frm, Guid Id)
 		{
 			var comment = frm["txtComment"];
-			var rateGiven = frm["rate"];
+			var rateGiven = frm["starRate"];
 			var roomType = frm["roomtype"];
 
 			var user = userRepo.FirstOrDefaultBy(x => x.Id == Id);
