@@ -1,5 +1,166 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model HB.Presentation.Models.Reservation.ReservationVM
+
 @{
+    ViewData["Title"] = "Payment";
 }
+
+<!DOCTYPE html>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+    <title>Online Paying</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/OnlinePaying.css">
+
+</head>
+<body>
+
+    <center>
+        <h2>Online Paying</h2>
+    </center>
+
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
+                <form name="myForm" action="@Url.Action("Payment","Payment")" method="post" required>
+
+                    <div class="row">
+                        <div class="col-50">
+                            <h3>Billing Address</h3>
+                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                            <input type="text" id="fname" name="txtFullname" placeholder="Enter your full name">
+                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                            <input type="email" id="email" name="txtEmail" placeholder="Enter your email">
+                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                            <input type="text" id="adr" name="txtAddress" placeholder="Enter your address">
+                            <label for="city"><i class="fa fa-institution"></i> City</label>
+                            <input type="text" id="city" name="txtCity" placeholder="Enter your city">
+
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="txtState" placeholder="Enter your state">
+                                </div>
+                                <div class="col-50">
+                                    <label for="zip">Zip</label>
+                                    <input type="text" id="zip" name="txtZip" placeholder="Enter your zip code">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-50">
+                            <h3>Payment</h3>
+                            <label for="fname">Accepted Cards</label>
+                            <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            </div>
+                            <label for="cname">Name on Card</label>
+                            <input type="text" id="cname" name="txtCardname" placeholder="Enter the name on your card">
+                            <label for="ccnum">Credit card number</label>
+                            <input type="text" id="ccnum" name="txtCardnumber" placeholder="Enter your card number">
+                            <label for="expmonth">Exp Month</label>
+                            <input type="text" id="expmonth" name="txtExpmonth" placeholder="Enter the number of expiration month">
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="expyear">Exp Year</label>
+                                    <input type="text" id="expyear" name="txtExpyear" placeholder="Enter the expiration year">
+                                </div>
+                                <div class="col-50">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="txtCVV" placeholder="Enter the CVV number">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <label>
+                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                    </label>
+                    <input action="@Url.Action("Index","History")" type="submit" value="Continue to checkout" class="btn">
+                </form>
+            </div>
+        </div>
+        <div class="col-25">
+            <div class="container">
+                <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>    </b></span></h4>
+
+                <hr>
+                <hr>
+                <hr>
+                <hr>
+
+                <p>Total: @Model.Res.Cost <span class="price" style="color:black"><b>            </b></span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function validateForm() {
+        var x = document.forms["myForm"]["fname"].value;
+        if (x == "" || x == null) {
+            alert("Name must be filled out");
+            return false;
+        }
+        var y = document.forms["myForm"]["email"].value;
+        if (y == "" || y == null) {
+            alert("Email must be filled out");
+            return false;
+        }
+        var z = document.forms["myForm"]["adr"].value;
+        if (z == "" || z == null) {
+            alert("Address must be filled out");
+            return false;
+        }
+        var t = document.forms["myForm"]["city"].value;
+        if (t == "" || t == null) {
+            alert("City must be filled out");
+            return false;
+        }
+        var w = document.forms["myForm"]["state"].value;
+        if (w == "" || w == null) {
+            alert("State must be filled out");
+            return false;
+        }
+        var q = document.forms["myForm"]["zip"].value;
+        if (q == "" || q == null) {
+            alert("Zip must be filled out");
+            return false;
+        }
+
+        var a = document.forms["myForm"]["cname"].value;
+        if (a == "" || a == null) {
+            alert("Name on card must be filled out");
+            return false;
+        }
+        var b = document.forms["myForm"]["ccnum"].value;
+        if (b == "" || b == null) {
+            alert("Credit cart number must be filled out");
+            return false;
+        }
+        var c = document.forms["myForm"]["expmonth"].value;
+        if (c == "" || c == null) {
+            alert("Exp month must be filled out");
+            return false;
+        }
+        var d = document.forms["myForm"]["expyear"].value;
+        if (d == "" || d == null) {
+            alert("Exp year must be filled out");
+            return false;
+        }
+        var e = document.forms["myForm"]["cvv"].value;
+        if (e == "" || e == null) {
+            alert("CVV must be filled out");
+            return false;
+        }
+
+    }
+</script>
