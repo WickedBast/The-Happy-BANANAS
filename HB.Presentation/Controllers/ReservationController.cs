@@ -10,6 +10,7 @@ using HB.Core.Security;
 using HB.Presentation.Code;
 using Microsoft.AspNetCore.Authorization;
 using HB.Entity.Application;
+using HB.Presentation.Models.Reservation;
 
 namespace HB.Presentation.Controllers
 {
@@ -18,30 +19,58 @@ namespace HB.Presentation.Controllers
 		private readonly IUserRepository userRepo;
 		private readonly IReservationRepository reservationRepo;
 		private readonly IRoomRepository roomRepo;
+		private readonly IRoomImageRepository imageRepository;
 
 		public ReservationController(
 			IUserRepository userRepo,
 			IReservationRepository reservationRepo,
-			IRoomRepository roomRepo
+			IRoomRepository roomRepo,
+			IRoomImageRepository roomImageRepository
 			)
 		{
 			this.userRepo = userRepo;
 			this.reservationRepo = reservationRepo;
 			this.roomRepo = roomRepo;
+			this.imageRepository = roomImageRepository;
 		}
 		public IActionResult Index()
 		{
 			return View();
 		}
 
+		public IActionResult Detail(string Slug)
+        {
+			var result = new ReservationDetailVM();
+
+			var reservation = reservationRepo.FirstOrDefaultBy(x => x.Slug == Slug);
+
+			Guid Id = reservation.Id;
+
+			var images = imageRepository.GetBy(x => x.RoomID == Id).Select(x => x.Image).ToList();
+			//var type= ;
+			//var noPerson = ;
+			//var price = ;
+			//var name = ;
+
+			result.Item = new ReservationDetailMM
+			{
+				Id = reservation.Id,
+				CreateDate = reservation.CreateDate.Value,
+				Images = images,
+				Slug = reservation.Slug
+			};
+
+			return View(result);
+        }
+
 		[Authorize]
 		public async Task<IActionResult> Reservation(IFormCollection frm)
 		{
 			var startDate = frm["txtStartDate"];
 			var endDate = frm["txtEndDate"];
-			var numberOfPerson = frm["txtNumberOfPerson"];
-			var roomCount = frm["txtRoomCount"];
-			var room = frm["txtRoom"];
+			var numberOfPerson = frm["txtNoPerson"];
+			var roomCount = frm["txtRoom"];
+			var room = frm["txtRoomType"];
 
 			var SdateConverted = DateTime.Parse(startDate);
 			var EdateConverted = DateTime.Parse(endDate);
