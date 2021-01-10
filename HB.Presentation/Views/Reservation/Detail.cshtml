@@ -1,5 +1,58 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model HB.Presentation.Models.Reservation.ReservationDetailVM
+
 @{
+    ViewData["Title"] = "Reservation Detail";
 }
+
+<!DOCTYPE html>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+    <title>Room Selection</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/General.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <center>
+        <h2>Room Selection</h2>
+    </center>
+
+
+    <center>
+        <!-- Portfolio Gallery Grid -->
+        <br>
+        <div class="row">
+
+            @foreach (var item in Model.Items)
+            {
+                <div class="column">
+                    <div class="content">
+                        <img src="@item.Images" alt="Room-1" style="width:20%">
+                        <h3>@item.Name</h3>
+                         <button action="@Url.Action("Index","Payment")" class="button"><span>Reserve</span></button>
+                    </div>
+                </div>
+                <br>
+            }
+
+
+            <!-- END GRID -->
+        </div>
+    </center>
+</body>
+
+</html>
+
+<script>
+    function validateForm() {
+        var x = document.forms["myForm"]["fname"].value;
+        if (x == "" || x == null) {
+            alert("Name must be filled out");
+            return false;
+        }
+    }
+</script>
