@@ -75,7 +75,7 @@ namespace HB.Presentation.Controllers
 				}
 			}
 			TempData["Info"] = "Mailiniz gönderilmiştir.";
-			return RedirectToAction("Index", "ForgotPassword");
+			return RedirectToAction("Index", "Login");
 
 		}
 
