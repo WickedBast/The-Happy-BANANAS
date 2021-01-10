@@ -80,7 +80,7 @@ namespace HB.Presentation.Controllers
 			{
 				var PNRCode = new Cryptography().GenerateKey(6, true);
 				
-					reservationRepo.Add(new Reservation
+				reservationRepo.Add(new Reservation
 				{
 					StartDate = DateTime.Parse(startDate),
 					EndDate = DateTime.Parse(endDate),
@@ -93,6 +93,13 @@ namespace HB.Presentation.Controllers
 			}
 			TempData["Info"] = "Ödeme sayfasına yönlendiriliyorsunuz";
 			return RedirectToAction("Index", "Payment");
+		}
+
+		public async  Task<IActionResult> Cancel(IFormCollection frm, Reservation res)
+		{
+			reservationRepo.Delete(res);
+			TempData["Info"] = "Rezervasyonunuz başarıyla silindi.";
+			return RedirectToAction("Index", "History");
 		}
 
 	}
