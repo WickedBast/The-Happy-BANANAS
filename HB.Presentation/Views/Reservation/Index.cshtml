@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Reservation";
 }
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+    <title>Reservation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/General.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+    <center>
+        <h2>Reservation</h2>
+    </center>
+
+
+    <form name="myForm" action="@Url.Action("Reservation","Reservation")" method="post" required>
+        <label for="roomtype">Room Type:</label>
+        <input type="text" name="txtRoomType" placeholder="Select the room type" required/>
+        <br>
+        <br>
+        <label for="numperson">Number of Person:</label>
+        <input type="number" name="txtNoPerson" placeholder="Enter the number of person" required/>
+        <br>
+        <br>
+        <label for="numroom">Number of Room:</label>
+        <input type="number" name="txtNoRoom" placeholder="Enter the number of rooms" required/>
+        <br>
+        <p>
+            Start Date:
+            <input value="startdate" type="date" name="txtStarDate" required>
+        </p>
+        <p>
+            End Date:
+            <input value="enddate" type="date" name="txtEndDate" required>
+        </p>
+        <button class="button" type="submit" action="@Url.Action("Detail","Register")"><span> Search </span></button>
+    </form>
+    <br>
+
+</body>
+
+</html>
+
