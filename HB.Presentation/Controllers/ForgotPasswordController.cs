@@ -67,7 +67,7 @@ namespace HB.Presentation.Controllers
 					using (var client = new SmtpClient())
 					{
 						client.Connect("smtp.gmail.com", 587, false);
-						client.Authenticate("alpnce@gmail.com", "");
+						client.Authenticate("hotelstar43@gmail.com", "happyBananas");
 						client.Send(message);
 						client.Disconnect(true);
 					}
