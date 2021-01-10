@@ -35,5 +35,7 @@ namespace HB.Entity.Application
         public virtual IList<Comment> Comments { get; set; }
 
         public virtual User User { get; set; }
+
+        public int Night { get; set; }
     }
 }
