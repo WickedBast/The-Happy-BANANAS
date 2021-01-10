@@ -43,6 +43,12 @@ namespace HB.Presentation.Controllers
 			var roomCount = frm["txtRoomCount"];
 			var room = frm["txtRoom"];
 
+			var SdateConverted = DateTime.Parse(startDate);
+			var EdateConverted = DateTime.Parse(endDate);
+			var today = DateTime.Today;
+			int resultSE = DateTime.Compare(SdateConverted, EdateConverted);
+			int resultST = DateTime.Compare(SdateConverted, today);
+
 			if (
 				string.IsNullOrWhiteSpace(startDate) ||
 				string.IsNullOrWhiteSpace(endDate) ||
@@ -55,20 +61,34 @@ namespace HB.Presentation.Controllers
 				return RedirectToAction("Index", "Reservation");
 			}
 
-			//else if ()
-			//{
-
-			//}
+			else if (resultSE < 0)
+			{
+				TempData["Info"] = "Çıkış tarihiniz giriş tarihinizden önce olamaz.";
+				return RedirectToAction("Index", "Reservation");
+			}
+			else if (resultSE == 0)
+			{
+				TempData["Info"] = "Giriş tarihinizle çıkış tarihiniz aynı olamaz.";
+				return RedirectToAction("Index", "Reservation");
+			}
+			else if (resultST < 0)
+			{
+				TempData["Info"] = "Giriş tarihiniz bugünden önce olamaz.";
+				return RedirectToAction("Index", "Reservation");
+			}
 			else
 			{
-				reservationRepo.Add(new Reservation
+				var PNRCode = new Cryptography().GenerateKey(6, true);
+				
+					reservationRepo.Add(new Reservation
 				{
 					StartDate = DateTime.Parse(startDate),
 					EndDate = DateTime.Parse(endDate),
 					NumberOfPerson = Int32.Parse(numberOfPerson),
 					RoomCount = Int32.Parse(roomCount),
 					//Room = ,
-					UserID = CurrentUserID
+					UserID = CurrentUserID,
+					PNRNumber = PNRCode
 				});
 			}
 			TempData["Info"] = "Ödeme sayfasına yönlendiriliyorsunuz";
