@@ -1,0 +1,161 @@
+﻿@model HB.Presentation.Models.Comment.CommentVM
+
+@{
+    ViewBag["Title"] = "Comment";
+}
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+    <title>Comments About Us</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/commentAboutUs.css">
+    <link rel="stylesheet" href="/css/General.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+
+<body>
+
+    <center>
+        <h2>Comments About Us</h2>
+    </center>
+
+    <h3>Create A Comment: </h3>
+
+    <form name="myForm" action="@Url.Action("Comment","Comment")" onsubmit="return validateForm()" method="post" style="max-width:500px" required>
+        <label for="roomtype">Room Type:</label>
+        <select id="roomtype" required>
+            <option value="Type1">Type1</option>
+            <option value="Type2">Type2</option>
+            <option value="Type3">Type3</option>
+            <option value="Type4">Type4</option>
+        </select>
+        <br>
+        <label for="comment">Comment:</label>
+        <input type="text" id="comment" name="txtComment" placeholder="Enter your comment" style="width:380px;height:90px" required><br>
+        <br>
+        <h3>Enter your rate: </h3>
+
+        <div id="half-stars-example">
+            <div class="rating-group">
+                <input class="rating__input rating__input--none" checked name="starRate" id="rating2-0" value="0" type="radio">
+                <label aria-label="0 stars" class="rating__label" for="rating2-0">&nbsp;</label>
+                <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-05" value="0.5" type="radio">
+                <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-10" value="10" type="radio">
+                <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating2-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-15" value="1.5" type="radio">
+                <label aria-label="2 stars" class="rating__label" for="rating2-20"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-20" value="20" type="radio">
+                <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating2-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-25" value="2.5" type="radio" checked>
+                <label aria-label="3 stars" class="rating__label" for="rating2-30"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-30" value="30" type="radio">
+                <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating2-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-35" value="3.5" type="radio">
+                <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-40" value="40" type="radio">
+                <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating2-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-45" value="4.5" type="radio">
+                <label aria-label="5 stars" class="rating__label" for="rating2-50"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                <input class="rating__input" name="starRate" id="rating2-50" value="50" type="radio">
+            </div>
+        </div>
+        <br />
+
+        <button class="button" type="submit" width="100px"><span> Publish </span></button>
+    </form>
+
+    <br>
+
+
+
+
+    <h2>Comments: (@Model.Items.Count)</h2>
+
+    <h2 style="text-align:center"> </h2>
+
+    @foreach (var item in Model.Items)
+    {
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <div class="container">
+                        <h2>@item.User.Name @item.User.Surname</h2>
+                        <p>@item.Room.Type</p>
+                        <div class="rating-group">
+                            @if (item.RateAVG >= decimal.Parse("0"))
+                            {
+                                <label aria-label="0 stars" class="rating__label" for="rating2-0">&nbsp;</label>
+                            }
+
+                            @if (item.RateAVG >= decimal.Parse("0,5"))
+                            {
+                                <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                            }
+
+                            @if (item.RateAVG >= decimal.Parse("1"))
+                            {
+                                <label aria-label="1 star" class="rating__label" for="rating2-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                            }
+
+                            @if (item.RateAVG >= decimal.Parse("1,5"))
+                            {
+                                <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating2-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                            }
+
+                            @if (item.RateAVG >= decimal.Parse("2"))
+                            {
+                                <label aria-label="2 stars" class="rating__label" for="rating2-20"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                            }
+                            @if (item.RateAVG >= decimal.Parse("2,5"))
+                            {
+                                <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating2-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                            }
+                            @if (item.RateAVG >= decimal.Parse("3"))
+                            {
+                                <label aria-label="3 stars" class="rating__label" for="rating2-30"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                            }
+                            @if (item.RateAVG >= decimal.Parse("3,5"))
+                            {
+                                <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating2-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                            }
+                            @if (item.RateAVG >= decimal.Parse("4"))
+                            {
+                                <label aria-label="4 stars" class="rating__label" for="rating2-40"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                            }
+                            @if (item.RateAVG >= decimal.Parse("4,5"))
+                            {
+                                <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating2-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                            }
+                            @if (item.RateAVG >= decimal.Parse("5"))
+                            {
+                                <label aria-label="5 stars" class="rating__label" for="rating2-50"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                            }
+                        </div>
+                        <p>@Model.Item.Explanation</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+
+</html>
+
+<script>
+    function validateForm() {
+        var x = document.forms["myForm"]["comment"].value;
+        if (x == "" || x == null) {
+            alert("Comment must be filled out");
+            return false;
+        }
+    }
+</script>
