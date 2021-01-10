@@ -45,11 +45,11 @@ namespace HB.Presentation.Controllers
 			var zip = frm["txtZip"];
 			var state = frm["txtState"];
 
-			var name = frm["txtSame"];
-			var cardNo = frm["txtCardNo"];
-			var expMonth = frm["txtExpMonth"];
-			var cvv = frm["txtCvv"];
-			var expYear = frm["txtExpYear"];
+			var name = frm["txtCardname"];
+			var cardNo = frm["txtCardnumber"];
+			var expMonth = frm["txtExpmonth"];
+			var cvv = frm["txtCVV"];
+			var expYear = frm["txtExpyear"];
 			var expYear2 = Int32.Parse(expYear);
 
 			var reservation = reservationRepo.FirstOrDefaultBy(x => x.Id == CurrentUserID);
