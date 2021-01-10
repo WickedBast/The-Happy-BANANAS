@@ -10,9 +10,11 @@ namespace HB.Presentation.Models.Comment
         public CommentVM()
         {
             Item = new CommentMM();
+            Items = new List<CommentMM>();
         }
 
         public CommentMM Item { get; set; }
+        public List<CommentMM> Items { get; set; }
         public int TotalCount { get; set; }
         public int PageCount { get; set; }
         public int CurrentPage { get; set; }
