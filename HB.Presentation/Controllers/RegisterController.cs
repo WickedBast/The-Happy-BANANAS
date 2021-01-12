@@ -68,10 +68,10 @@ namespace HB.Presentation.Controllers
 
             userRepo.Add(new Entity.Application.User
             {
-                Name = FirstName,
-                Surname = LastName,
-                Email = Email,
-                PhoneNumber = PhnNo,
+                Name = FirstName.ToString(),
+                Surname = LastName.ToString(),
+                Email = Email.ToString(),
+                PhoneNumber = PhnNo.ToString(),
                 Role = Core.Enum.Enums.Role.User,
                 Password = Password
             });
