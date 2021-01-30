@@ -39,7 +39,7 @@ namespace HB.Presentation.Controllers
 		public async Task<IActionResult> Payment(IFormCollection frm)
 		{
 			var fullname = frm["txtFullName"];
-			var email = frm["txtEmail"];
+			var email = frm["txtEmail"].ToString();
 			var address = frm["txtAddress"];
 			var city = frm["txtCity"];
 			var zip = frm["txtZip"];
