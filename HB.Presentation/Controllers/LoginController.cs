@@ -26,7 +26,7 @@ namespace HB.Presentation.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Login(IFormCollection frm)
 		{
-			var Email = frm["txtEmail"];
+			var Email = frm["txtEmail"].ToString();
 			var Password = new Cryptography().EncryptString(frm["txtPassword"]);
 
 			var user = userRepo.FirstOrDefaultBy(x => x.Email == Email && x.Password == Password);
