@@ -27,7 +27,7 @@ namespace HB.Presentation.Controllers
         {
             var FirstName = frm["txtFirstName"];
             var LastName = frm["txtLastName"];
-            var Email = frm["txtEmail"];
+            var Email = frm["txtEmail"].ToString();
             var PhnNo = frm["txtPhnNo"];
             var Password = frm["txtPassword"];
             var PasswordRetry = frm["txtPasswordRetry"];
