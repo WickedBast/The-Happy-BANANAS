@@ -53,7 +53,7 @@ namespace HB.Presentation.Controllers
 					};
 
 					var newPassword = new Cryptography().GenerateKey(8, false);
-					user.Password = newPassword;
+					user.Password = new Cryptography().EncryptString(newPassword); ;
 					userRepo.Update(user);						
 						
 					var message = new MimeMessage();
@@ -62,7 +62,7 @@ namespace HB.Presentation.Controllers
 					message.Subject = "Temporary Password";
 					message.Body = new TextPart("plain")
 					{
-						Text = "Tekrar giriş yapabilmeniz için geçici şifreniz: " + user.Password
+						Text = "Tekrar giriş yapabilmeniz için geçici şifreniz: " + newPassword
 					};
 					using (var client = new SmtpClient())
 					{
