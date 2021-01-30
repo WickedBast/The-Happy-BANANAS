@@ -30,7 +30,7 @@ namespace HB.Presentation.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Forgot(IFormCollection frm)
 		{
-			var Email = frm["txtEmail"];
+			var Email = frm["txtEmail"].ToString();
 
 			if (string.IsNullOrEmpty(Email))
 			{
