@@ -262,15 +262,17 @@ center {
   color: white;
 }
 .footer {
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 1px;
-    font-size: 10px;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background: Indigo;
-   color: lavender;
-   text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 1px;
+	font-size: 10px;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: Indigo;
+	color: lavender;
+	text-align: center;
+	border: 0px;
+	margin: 0px;
 }
 
 
