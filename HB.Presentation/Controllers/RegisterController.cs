@@ -78,7 +78,7 @@ namespace HB.Presentation.Controllers
 
             //TODO: Doğrulama e-postası gönderilecek.
             TempData["Info"] = "Kayıt işleminiz gerçekleştirilmiştir.";
-            return RedirectToAction("Index", "Register");
+            return RedirectToAction("Index", "Login");
         }
 
     }
