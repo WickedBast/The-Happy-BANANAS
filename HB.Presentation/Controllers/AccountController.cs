@@ -54,7 +54,7 @@ namespace HB.Presentation.Controllers
 			}
 			else if (PasswordP == need)
 			{
-				TempData["Info"] = "Güncek şifreniz yeni şifrenizle aynı olmalıdır.";
+				TempData["Info"] = "Güncel şifreniz yeni şifrenizle aynı olmalıdır.";
 				return RedirectToAction("Index", "Account");
 			}
 			else if (Password.ToString().Length < 6)
