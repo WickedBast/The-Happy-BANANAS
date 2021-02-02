@@ -10,7 +10,7 @@ namespace HB.Entity.Application
 
         public string CommentText { get; set; }
 
-        public Guid? UserID { get; set; }
+        public Guid UserID { get; set; }
 
         public Guid RoomNumber { get; set; }
 
