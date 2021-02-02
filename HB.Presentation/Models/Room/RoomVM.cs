@@ -27,7 +27,7 @@ namespace HB.Presentation.Models.Room
         }
 
         public Guid Id { get; set; }
-        public DateTime CreateDate { get; set; }        
+        public DateTime? CreateDate { get; set; }        
         public UserMM User { get; set; }
         public int PersonCapacity { get; set; }
         public string Type { get; set; }
