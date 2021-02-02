@@ -62,18 +62,45 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
-.footer {
-	line-height: 50px; /* Vertically center the text there */
-	font-family: Arial, Helvetica, sans-serif;
-	padding: 1px;
-	background: Indigo;
+
+.fa {
+	padding: 10px;
+	font-size: 15px;
+	width: 15px;
 	text-align: center;
-	color: Lavender;
+	text-decoration: none;
+	margin: 5px 5px;
+	border-radius: 10%;
+}
+
+	.fa:hover {
+		opacity: 0.7;
+	}
+
+.fa-facebook {
+	background: #3B5998;
+	color: white;
+}
+
+.fa-twitter {
+	background: #55ACEE;
+	color: white;
+}
+
+.fa-instagram {
+	background: #125688;
+	color: white;
+}
+
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 0px;
 	font-size: 10px;
+	left: 0;
 	bottom: 0;
 	width: 100%;
-	height: 90px;
-	white-space: nowrap;
-	border: 0px;
-	margin: 0px;
+	height: 70px;
+	background: Indigo;
+	color: lavender;
+	text-align: center;
 }
