@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "AddNewRoom";
+}
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+    <title>Add New Room</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/General.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+    <center>
+        <h2>Add New Room</h2>
+    </center>
+
+
+    <form name="myForm" action="@Url.Action("Add","RoomAdd")" method="post" required>
+        <label for="roomtype">Room Type:</label>
+        <input type="text" name="txtRoomType" placeholder="Enter the room type" required />
+        <br>
+        <br>
+        <label for="roomnumber">Room Number:</label>
+        <input type="text" name="txtRoomNumber" placeholder="Enter the room number" required />
+        <br>
+        <br>
+        <label for="personcapacity">Maximum Person Capacity:</label>
+        <input type="number" name="txtPersonCapacity" placeholder="Enter the person capacity" required />
+        <br>
+        <br>
+        <label for="price">Price (for a night):</label>
+        <input type="number" name="txtPrice" placeholder="Enter the price" required />
+        <br>
+        <button class="button" type="submit"><span> Add </span></button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>
+
