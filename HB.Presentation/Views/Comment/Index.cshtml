@@ -29,12 +29,7 @@
 
     <form name="myForm" action="@Url.Action("Comment","Comment")" onsubmit="return validateForm()" method="post" style="max-width:500px" required>
         <label for="roomtype">Room Type:</label>
-        <select id="roomtype" required>
-            <option value="Type1">Type1</option>
-            <option value="Type2">Type2</option>
-            <option value="Type3">Type3</option>
-            <option value="Type4">Type4</option>
-        </select>
+        <input type="text" id="ReservationID" name="txtReservationID" placeholder="Enter your reservation ID" style="width:380px;height:50px" required/>
         <br>
         <label for="comment">Comment:</label>
         <input type="text" id="comment" name="txtComment" placeholder="Enter your comment" style="width:380px;height:90px" required><br>

@@ -57,6 +57,7 @@ namespace HB.Presentation.Models.Reservation
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Night { get; set; }
+        public string Type { get; set; }
 
     }
 

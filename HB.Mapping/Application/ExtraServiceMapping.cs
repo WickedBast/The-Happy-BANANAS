@@ -11,7 +11,7 @@ namespace HB.Mapping.Application
     {
         public ExtraServiceMapping(EntityTypeBuilder<ExtraService> builder)
         {
-            builder.HasOne(x => x.User).WithMany(x => x.ExtraServices).HasForeignKey(x => x.UserID).OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior.Restrict);
+            builder.HasOne(x => x.User).WithMany(x => x.ExtraService).HasForeignKey(x => x.UserID).OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior.Restrict);
         }
     }
 }
