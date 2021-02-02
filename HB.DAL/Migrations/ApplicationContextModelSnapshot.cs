@@ -296,7 +296,7 @@ namespace HB.DAL.Migrations
             modelBuilder.Entity("HB.Entity.Application.ExtraService", b =>
                 {
                     b.HasOne("HB.Entity.Application.User", "User")
-                        .WithMany("ExtraServices")
+                        .WithMany("ExtraService")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
