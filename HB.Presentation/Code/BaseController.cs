@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using static HB.Core.Enum.Enums;
 
 namespace HB.Presentation.Code
 {
@@ -35,6 +36,14 @@ namespace HB.Presentation.Code
             get
             {
                 return HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Email").Value;
+            }
+        }
+
+        public string CurrentUserRole
+        {
+            get
+            {
+                return HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Role").Value;
             }
         }
     }

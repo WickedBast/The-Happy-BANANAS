@@ -157,6 +157,12 @@ namespace HB.Presentation
                     );
 
                 routes.MapRoute(
+                    name: "addRoom",
+                    template: "/addRoom",
+                    defaults: new { controller = "RoomAdd", action = "Index" }
+                    );
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });

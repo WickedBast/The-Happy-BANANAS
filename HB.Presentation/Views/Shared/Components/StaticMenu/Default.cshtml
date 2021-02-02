@@ -26,8 +26,16 @@
 
             @if (User.Identity.IsAuthenticated)
             {
-                <a href="@Url.Action("Index","ExtraService")" class="right">Extra Services</a>
-                <a href="@Url.Action("Index","History")" class="right">Reservation History</a>
+                //if (User.Claims.FirstOrDefault(x => x.Type == "Role").Value == "1")
+                //{
+                    <a href="@Url.Action("Index","ExtraService")" class="right">Extra Services</a>
+                    <a href="@Url.Action("Index","History")" class="right">Reservation History</a>
+                //}
+                //else
+                //{
+                    <a href="@Url.Action("Index","RoomAdd")" class="right"> Add Room</a>
+                //}
+
 
                 <div class="vertical-menu 1">
                     <a href="@Url.Action("Index","Account")" class="right active"> Hello (@User.Claims.FirstOrDefault(x => x.Type == "Name").Value) </a>
@@ -36,8 +44,8 @@
             }
             else
             {
-                <a href="@Url.Action("Index","Register")" class="right">SignUp</a>
-                <a href="@Url.Action("Index","Login")" class="right ">Signin</a>
+                <a href="@Url.Action("Index","Register")" class="right">Sign Up</a>
+                <a href="@Url.Action("Index","Login")" class="right ">Sign In</a>
             }
 
 
