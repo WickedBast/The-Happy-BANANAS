@@ -20,6 +20,11 @@
         <h2>Add New Room</h2>
     </center>
 
+    @if (TempData["Info"] != null)
+    {
+        <p class="alert-light"> @TempData["Info"] <span class="close"></span> </p>
+    }
+
 
     <form name="myForm" action="@Url.Action("Add","RoomAdd")" method="post" required>
         <label for="roomtype">Room Type:</label>
