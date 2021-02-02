@@ -22,14 +22,16 @@
 <body>
 
     <center>
-        <h2>Comments About Us</h2>
-    </center>
+        <br>
+            <h2>Comments About Us</h2>
+        <br>
+</center>
 
     <h3>Create A Comment: </h3>
 
     <form name="myForm" action="@Url.Action("Comment","Comment")" onsubmit="return validateForm()" method="post" style="max-width:500px" required>
-        <label for="roomtype">Room Type:</label>
-        <input type="text" id="ReservationID" name="txtReservationID" placeholder="Enter your reservation ID" style="width:380px;height:50px" required/>
+        <label for="reservationid">Reservation ID:</label>
+        <input type="text" id="ReservationID" name="txtReservationID" placeholder="Enter your reservation ID" style="width:300px;height:50px" required/>
         <br>
         <label for="comment">Comment:</label>
         <input type="text" id="comment" name="txtComment" placeholder="Enter your comment" style="width:380px;height:90px" required><br>
