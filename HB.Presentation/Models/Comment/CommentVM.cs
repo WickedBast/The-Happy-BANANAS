@@ -9,11 +9,9 @@ namespace HB.Presentation.Models.Comment
     {
         public CommentVM()
         {
-            Item = new CommentMM();
             Items = new List<CommentMM>();
         }
 
-        public CommentMM Item { get; set; }
         public List<CommentMM> Items { get; set; }
         public int TotalCount { get; set; }
         public int PageCount { get; set; }
@@ -32,6 +30,7 @@ namespace HB.Presentation.Models.Comment
         public Guid Id { get; set; }
         public DateTime CreateDate { get; set; }
         public string Explanation { get; set; }
+        public Guid ReservationID { get; set; }
         public UserMM User { get; set; }
         public decimal RateAVG { get; set; }
         public RoomMM Room { get; set; }
