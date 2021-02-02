@@ -22,12 +22,12 @@
 
 <body>
     <center>
-        <h2>Reservation History</h2>
+        <h2>Reservation History (@Model.Item.Count)</h2>
     </center>
 
     <h2 style="text-align:center"> </h2>
 
-    @foreach (var item in Model.Item)
+    @foreach (var item in Model.Items)
     {
         <div class="row">
             <div class="column">
