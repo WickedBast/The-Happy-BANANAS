@@ -50,7 +50,7 @@ namespace HB.DAL.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid?>("UserID")
+                    b.Property<Guid>("UserID")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
@@ -289,7 +289,8 @@ namespace HB.DAL.Migrations
                     b.HasOne("HB.Entity.Application.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HB.Entity.Application.ExtraService", b =>
