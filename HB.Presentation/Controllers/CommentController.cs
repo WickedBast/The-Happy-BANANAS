@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HB.Presentation.Code;
+using HB.Presentation.Models.Comment;
 using HB.Repository.Interface.Application;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,32 @@ namespace HB.Presentation.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
+			var result = new CommentVM();
+
+			var query = commentRepo.GetBy(x => true);
+
+			result.Items = query.OrderByDescending(x => x.CreateDate).Take(4).Select(x => new CommentMM
+			{
+				Id = x.Id,
+				ReservationID = x.ReservationID,
+				RateAVG = x.RateGiven,
+				CreateDate = x.CreateDate.Value,
+				Explanation = x.CommentText,
+				Room = new RoomMM
+                {
+					Type = x.Room.Type
+                },
+				User = new UserMM
+                {
+					Id = x.UserID,
+					Name = x.User.Name,
+					Surname = x.User.Surname
+                }
+
+
+			}).ToList();
+
+			return View(result);
 		}
 
 		[HttpPost]
