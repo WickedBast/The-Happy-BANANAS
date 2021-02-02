@@ -29,7 +29,7 @@ namespace HB.Presentation.Controllers
 
 			var query = commentRepo.GetBy(x => true);
 
-			result.Items = query.OrderByDescending(x => x.CreateDate).Take(4).Select(x => new CommentMM
+			result.Items = query.OrderByDescending(x => x.CreateDate).Take(100).Select(x => new CommentMM
 			{
 				Id = x.Id,
 				ReservationID = x.ReservationID,
@@ -56,6 +56,7 @@ namespace HB.Presentation.Controllers
 		[HttpPost]
 		public IActionResult Comment(IFormCollection frm, Guid Id)
 		{
+			var resID = frm["txtReservationID"];
 			var comment = frm["txtComment"];
 			var rateGiven = frm["starRate"];
 			var roomType = frm["roomtype"];
@@ -71,6 +72,7 @@ namespace HB.Presentation.Controllers
 			{
 				commentRepo.Add(new Entity.Application.Comment
 				{
+					ReservationID = Guid.Parse(resID),
 					CommentText = comment,
 					RateGiven = decimal.Parse(rateGiven) / (10),
 					UserID = CurrentUserID,
