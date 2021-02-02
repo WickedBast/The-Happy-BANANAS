@@ -23,6 +23,6 @@ namespace HB.Entity.Application
 
         public virtual IList<Comment> Comments { get; set; }
 
-        public virtual IList<ExtraService> ExtraServices { get; set; }
+        public virtual IList<ExtraService> ExtraService { get; set; }
     }
 }
