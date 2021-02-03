@@ -32,7 +32,7 @@ namespace HB.Presentation.Controllers
         {
             var RoomName = frm["txtRoomName"];
             var RoomType = frm["txtRoomType"];
-            var RoomNumber = frm["txtRoomNumber"];
+            var RoomNumber = frm["txtRoomNumber"].ToString();
             var MaxPerson = frm["txtPersonCapacity"];
             var Price = frm["txtPrice"];
 
@@ -72,10 +72,11 @@ namespace HB.Presentation.Controllers
                 TempData["Info"] = "Lütfen bütün alanları doldurun.";
                 return RedirectToAction("Index", "RoomAdd");
             }
-            //else if (RoomNumber)
-            //{
-
-            //}           
+            else if (roomRepo.Any(x => x.RoomNumber == RoomNumber))
+            {
+                TempData["Info"] = RoomNumber + " numaralı oda daha önce eklenmiştir.";
+                return RedirectToAction("Index", "RoomAdd");
+            }
 
             roomRepo.Add(new Room
             {
