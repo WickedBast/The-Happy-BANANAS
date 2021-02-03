@@ -21,7 +21,7 @@ namespace HB.Presentation.Models.Room
         public RoomMM()
         {
             User = new UserMM();
-            RoomImage = new List<string>();
+
         }
 
         public Guid Id { get; set; }
@@ -29,7 +29,7 @@ namespace HB.Presentation.Models.Room
         public UserMM User { get; set; }
         public int PersonCapacity { get; set; }
         public string Type { get; set; }
-        public List<string> RoomImage { get; set; }
+        public string RoomImage { get; set; }
         public int Cost { get; set; }
         public string Name { get; set; }
         public string Slug { get; set; }
