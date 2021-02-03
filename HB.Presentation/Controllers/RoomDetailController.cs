@@ -20,11 +20,17 @@ namespace HB.Presentation.Controllers
 			this.roomRepo = roomRepo;
 			this.roomImageRepo = roomImageRepo;
         }
-		public IActionResult Index()
+		public IActionResult Index(string Slug)
 		{
 			var result = new RoomVM();
 
 			var query = roomRepo.GetBy(x => true);
+
+			var room = roomRepo.FirstOrDefaultBy(x => x.Slug == Slug);
+
+			//Guid Id = room.Id;
+
+			//var images = roomImageRepo.GetBy(x => x.RoomID == Id).Select(x => x.Image).ToList();
 
 			result.Item = query.OrderByDescending(x => x.CreateDate).Take(10).Select(x => new RoomMM 
 			{
@@ -33,6 +39,7 @@ namespace HB.Presentation.Controllers
 				PersonCapacity = x.PersonCapacity,
 				Cost = x.Price,
 				Type = x.Type,
+				//RoomImage = images
 
 			}).ToList();
 
