@@ -50,7 +50,6 @@ namespace HB.Presentation.Controllers
             var expMonth = frm["txtExpmonth"];
             var cvv = frm["txtCVV"];
             var expYear = frm["txtExpyear"];
-            var expYear2 = Int32.Parse(expYear);
 
             var reservation = reservationRepo.FirstOrDefaultBy(x => x.Id == CurrentUserID);
             var total = reservation.Room.Price;
@@ -77,7 +76,7 @@ namespace HB.Presentation.Controllers
                 TempData["Info"] = "Lütfen geçerli bir e-posta adresi girin.";
                 return RedirectToAction("Index", "Payment");
             }
-            else if (expYear2 <= 2021)
+            else if (Int32.Parse(expYear) <= 2021)
             {
                 TempData["Info"] = "Kartınızın son geçerlilik tarihi dolmuştur.";
                 return RedirectToAction("Index", "Payment");
