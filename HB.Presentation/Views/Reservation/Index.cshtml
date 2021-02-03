@@ -23,15 +23,20 @@
 
     <form name="myForm" action="@Url.Action("Reservation","Reservation")" method="post" required>
         <label for="roomtype">Room Type:</label>
-        <input type="text" name="txtRoomType" placeholder="Select the room type" required />
+        <select name="txtRoomType">
+            <option value="Type1">Type1</option>
+            <option value="Type2">Type2</option>
+            <option value="Type3">Type3</option>
+         </select>
+        
         <br>
         <br>
         <label for="numperson">Number of Person:</label>
-        <input type="number" name="txtNoPerson" placeholder="Enter the number of person" required />
+        <input type="number" name="txtNoPerson" placeholder="Enter the number of person" min="1" max="5" required />
         <br>
         <br>
         <label for="numroom">Number of Room:</label>
-        <input type="number" name="txtNoRoom" placeholder="Enter the number of rooms" required />
+        <input type="number" name="txtNoRoom" placeholder="Enter the number of rooms" min="1" max="5" required />
         <br>
         <p>
             Start Date:
