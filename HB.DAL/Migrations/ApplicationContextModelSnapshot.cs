@@ -185,6 +185,9 @@ namespace HB.DAL.Migrations
                     b.Property<bool>("IsFull")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<int>("PersonCapacity")
                         .HasColumnType("int");
 
@@ -195,6 +198,9 @@ namespace HB.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RoomNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Slug")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Type")
