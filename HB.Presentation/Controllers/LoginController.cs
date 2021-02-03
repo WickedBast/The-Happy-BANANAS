@@ -39,7 +39,7 @@ namespace HB.Presentation.Controllers
 					new Claim("Name", user.Name),
 					new Claim("Id", user.Id.ToString()),
 					new Claim("Surname", user.Surname.ToString()),
-					new Claim("Role", user.Role.ToString())
+					new Claim(ClaimTypes.Role, user.Role.ToString())
 				};
 
 				var userIdentity = new ClaimsIdentity(claims, "login");
