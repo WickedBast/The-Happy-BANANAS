@@ -39,6 +39,7 @@ namespace HB.Presentation.Controllers
 				PersonCapacity = x.PersonCapacity,
 				Cost = x.Price,
 				Type = x.Type,
+				RoomImage = x.RoomImages.Select(x => x.Image).FirstOrDefault()
 				//RoomImage = images
 
 			}).ToList();

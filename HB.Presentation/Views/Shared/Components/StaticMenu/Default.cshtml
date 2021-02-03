@@ -26,16 +26,15 @@
 
             @if (User.Identity.IsAuthenticated)
             {
-                //if (User.Claims.FirstOrDefault(x => x.Type == "Role").Value == "1")
-                //{
+                if (User.IsInRole("User"))
+                {
                     <a href="@Url.Action("Index","ExtraService")" class="right">Extra Services</a>
                     <a href="@Url.Action("Index","History")" class="right">Reservation History</a>
-                //}
-                //else
-                //{
+                }
+                else
+                {
                     <a href="@Url.Action("Index","RoomAdd")" class="right"> Add Room</a>
-                //}
-
+                }
 
                 <div class="vertical-menu 1">
                     <a href="@Url.Action("Index","Account")" class="right active"> Hello (@User.Claims.FirstOrDefault(x => x.Type == "Name").Value) </a>
