@@ -34,7 +34,7 @@ namespace HB.Presentation.Controllers
         {
             var RoomName = frm["txtRoomName"];
             var RoomType = frm["txtRoomType"];
-            var RoomNumber = frm["txtRoomNumber"]
+            var RoomNumber = frm["txtRoomNumber"];
             var MaxPerson = frm["txtPersonCapacity"];
             var Price = frm["txtPrice"];
 
