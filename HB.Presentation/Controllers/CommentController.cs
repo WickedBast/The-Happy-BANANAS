@@ -62,10 +62,20 @@ namespace HB.Presentation.Controllers
 			var roomType = frm["roomtype"];
 
 			var user = userRepo.FirstOrDefaultBy(x => x.Id == Id);
+            if (!(User.Identity.IsAuthenticated))
+            {
+				TempData["Info"] = "Yorum yapabilmek için giriş yapmalısınız..";
+				return RedirectToAction("Index", "Comment");
+			}
 
-			if (string.IsNullOrWhiteSpace(comment))
+			else if (string.IsNullOrWhiteSpace(comment))
 			{
 				TempData["Info"] = "Lütfen yorum yapacağınız alanı boş bırakmayın";
+				return RedirectToAction("Index", "Comment");
+			}
+			else if (string.IsNullOrWhiteSpace(rateGiven))
+			{
+				TempData["Info"] = "Lütfen puanlama yapınız ";
 				return RedirectToAction("Index", "Comment");
 			}
 			else
