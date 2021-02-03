@@ -34,14 +34,14 @@ namespace HB.Presentation.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ExtraService(IFormCollection frm)
+        public IActionResult ExtraService(IFormCollection frm)
         {
             var serviceType = frm["txtServiceType"];
             var numberOfPerson = frm["txtNumberOfPerson"];
             var date = frm["txtDate"];
             var time = frm["txtTime"];
             var pnrNo = frm["txtPnrNo"];
-            var quota = -1;
+            //var quota = -1;
 
             var reservation = reservationRepo.FirstOrDefaultBy(x => x.PNRNumber == pnrNo);
 
