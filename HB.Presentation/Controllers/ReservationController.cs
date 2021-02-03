@@ -71,25 +71,30 @@ namespace HB.Presentation.Controllers
         {
 			var result = new ReservationDetailVM();
 
-			var reservation = reservationRepo.FirstOrDefaultBy(x => x.Slug == Slug);
+            var query = roomRepo.GetBy(x => true);
 
-			Guid Id = reservation.Id;
+            var reservation = reservationRepo.FirstOrDefaultBy(x => x.Slug == Slug);
 
-			var images = imageRepository.GetBy(x => x.RoomID == Id).Select(x => x.Image).ToList();
-			//var type= ;
-			//var noPerson = ;
-			//var price = ;
-			//var name = ;
+            //Guid Id = reservation.Id;
 
-			result.Item = new ReservationDetailMM
-			{
-				Id = reservation.Id,
-				CreateDate = reservation.CreateDate.Value,
-				Images = images,
-				Slug = reservation.Slug
-			};
+            //var images = imageRepository.GetBy(x => x.RoomID == Id).Select(x => x.Image).ToList();
+            //var type= ;
+            //var noPerson = ;
+            //var price = ;
+            //var name = ;
 
-			return View(result);
+            result.Items = query.OrderByDescending(x => x.CreateDate).Take(10).Select(x => new ReservationDetailMM
+            {
+                Id = x.Id,
+                CreateDate = x.CreateDate,                
+                Cost = x.Price,
+                Type = x.Type,
+                //RoomImage = x.RoomImages.Select(x => x.Image).FirstOrDefault()
+                //RoomImage = images
+
+            }).ToList();
+
+            return View(result);
         }
 
         [Authorize]
