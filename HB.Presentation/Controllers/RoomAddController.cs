@@ -1,6 +1,7 @@
 ﻿using HB.Core.Extensions;
 using HB.Entity.Application;
 using HB.Repository.Interface.Application;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace HB.Presentation.Controllers
 {
+    [Authorize]
     public class RoomAddController : Controller
     {
 
@@ -27,12 +29,12 @@ namespace HB.Presentation.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddAsync(IFormCollection frm, List<IFormFile> Images)
+        [Authorize]
+        public async Task<IActionResult> AddRoom(IFormCollection frm, List<IFormFile> Images)
         {
             var RoomName = frm["txtRoomName"];
             var RoomType = frm["txtRoomType"];
-            var RoomNumber = frm["txtRoomNumber"].ToString();
+            var RoomNumber = frm["txtRoomNumber"]
             var MaxPerson = frm["txtPersonCapacity"];
             var Price = frm["txtPrice"];
 
@@ -72,25 +74,36 @@ namespace HB.Presentation.Controllers
                 TempData["Info"] = "Lütfen bütün alanları doldurun.";
                 return RedirectToAction("Index", "RoomAdd");
             }
+
             else if (roomRepo.Any(x => x.RoomNumber == RoomNumber))
             {
                 TempData["Info"] = RoomNumber + " numaralı oda daha önce eklenmiştir.";
                 return RedirectToAction("Index", "RoomAdd");
             }
 
-            roomRepo.Add(new Room
-            {
-                Name = RoomName.ToString(),
-                Type = RoomType.ToString(),
-                RoomNumber = RoomNumber.ToString(),
-                PersonCapacity = Int32.Parse(MaxPerson),
-                Price = Int32.Parse(Price),
-                Slug = RoomName.ToString().ToUrlSlug(),
-                RoomImages = ImageList
-            });
+            //else if (RoomNumber)
+            //{
 
-            TempData["Info"] = "Oda kayıt işleminiz gerçekleştirilmiştir.";
-            return RedirectToAction("Index", "RoomAdd");
+            //}
+
+
+            else
+            {
+                roomRepo.Add(new Room
+                {
+                    Name = RoomName.ToString(),
+                    Type = RoomType.ToString(),
+                    RoomNumber = RoomNumber.ToString(),
+                    PersonCapacity = Int32.Parse(MaxPerson),
+                    Price = Int32.Parse(Price),
+                    Slug = RoomName.ToString().ToUrlSlug(),
+                    RoomImages = ImageList
+                });
+
+                TempData["Info"] = "Oda kayıt işleminiz gerçekleştirilmiştir.";
+                return RedirectToAction("Index", "RoomAdd");
+            }
+            
         }
     }
 }
