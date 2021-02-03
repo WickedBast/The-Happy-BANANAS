@@ -18,6 +18,8 @@
 <body>
     <center>
         <h2>Add New Room</h2>
+        <br>
+        <br>
     </center>
 
     @if (TempData["Info"] != null)
@@ -28,7 +30,7 @@
 
 <form name="myForm" action="@Url.Action("Add","RoomAdd")" method="post" required>
     <label for="roomtype">Room Type:</label>
-    <select name="txtRoomType">
+    <select name="txtRoomType" style="width:100px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
         <option value="Type1">Type1</option>
         <option value="Type2">Type2</option>
         <option value="Type3">Type3</option>
@@ -36,24 +38,29 @@
     <br>
     <br>
     <label for="roomname">Room Name:</label>
-    <input type="text" name="txtRoomName" placeholder="Enter the room name" required />
+    <input type="text" name="txtRoomName" placeholder="Enter the room name" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required />
     <br />
     <br />
     <label for="roomnumber">Room Number:</label>
-    <input type="text" name="txtRoomNumber" placeholder="Enter the room number" required />
+    <input type="text" name="txtRoomNumber" placeholder="Enter the room number" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required />
     <br>
     <br>
     <label for="personcapacity">Maximum Person Capacity:</label>
+<<<<<<< Updated upstream
     <input type="number" name="txtPersonCapacity" placeholder="Capacity" min="1" max="5" required />
+=======
+    <input type="number" name="txtPersonCapacity" placeholder="Capacity" min="1" max="10" style="width:130px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required />
+>>>>>>> Stashed changes
     <br>
     <br>
     <label for="price">Price (for a night):</label>
-    <input type="number" name="txtPrice" placeholder="Enter the price" min="0" required />
+    <input type="number" name="txtPrice" placeholder="Enter the price" min="0" style="width:160px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required />
     <br />
     <br />
     <label for="upload-image">Add Photo:</label>
     <input type="file" name="Images" id="upload-image" multiple />
     <br>
+    <br />
     <button class="button" type="submit"><span> Add </span></button>
 </form>
     <br>
