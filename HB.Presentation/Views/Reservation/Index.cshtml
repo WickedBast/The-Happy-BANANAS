@@ -22,15 +22,6 @@
 
 
     <form name="myForm" action="@Url.Action("Reservation","Reservation")" method="post" required>
-        <label for="roomtype">Room Type:</label>
-        <select name="txtRoomType">
-            <option value="Type1">Type1</option>
-            <option value="Type2">Type2</option>
-            <option value="Type3">Type3</option>
-         </select>
-        
-        <br>
-        <br>
         <label for="numperson">Number of Person:</label>
         <input type="number" name="txtNoPerson" placeholder="Enter the number of person" min="1" max="5" required />
         <br>
@@ -46,7 +37,7 @@
             End Date:
             <input value="enddate" type="date" name="txtEndDate" required>
         </p>
-        <button class="button" type="submit" action="@Url.Action("Detail","Register")"><span> Search </span></button>
+        <button class="button" type="submit"> <span> Search </span></button>
     </form>
     <br>
     <br> <br> <br> <br>
