@@ -26,24 +26,28 @@
     }
 
 
-    <form name="myForm" action="@Url.Action("Add","RoomAdd")" method="post" required>
-        <label for="roomtype">Room Type:</label>
-        <input type="text" name="txtRoomType" placeholder="Enter the room type" required />
-        <br>
-        <br>
-        <label for="roomnumber">Room Number:</label>
-        <input type="text" name="txtRoomNumber" placeholder="Enter the room number" required />
-        <br>
-        <br>
-        <label for="personcapacity">Maximum Person Capacity:</label>
-        <input type="number" name="txtPersonCapacity" placeholder="Enter the person capacity" required />
-        <br>
-        <br>
-        <label for="price">Price (for a night):</label>
-        <input type="number" name="txtPrice" placeholder="Enter the price" required />
-        <br>
-        <button class="button" type="submit"><span> Add </span></button>
-    </form>
+<form name="myForm" action="@Url.Action("Add","RoomAdd")" method="post" required>
+    <label for="roomtype">Room Type:</label>
+    <select name="txtRoomType">
+        <option value="Type1">Type1</option>
+        <option value="Type2">Type2</option>
+        <option value="Type3">Type3</option>
+    </select>
+    <br>
+    <br>
+    <label for="roomnumber">Room Number:</label>
+    <input type="text" name="txtRoomNumber" placeholder="Enter the room number" required />
+    <br>
+    <br>
+    <label for="personcapacity">Maximum Person Capacity:</label>
+    <input type="number" name="txtPersonCapacity" placeholder="Enter the person capacity" min="1" max="10" required />
+    <br>
+    <br>
+    <label for="price">Price (for a night):</label>
+    <input type="number" name="txtPrice" placeholder="Enter the price" min="0" required />
+    <br>
+    <button class="button" type="submit"><span> Add </span></button>
+</form>
     <br>
     <br>
     <br>
