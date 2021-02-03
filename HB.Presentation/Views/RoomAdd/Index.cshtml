@@ -35,16 +35,24 @@
     </select>
     <br>
     <br>
+    <label for="roomname">Room Name:</label>
+    <input type="text" name="txtRoomName" placeholder="Enter the room name" required />
+    <br />
+    <br />
     <label for="roomnumber">Room Number:</label>
     <input type="text" name="txtRoomNumber" placeholder="Enter the room number" required />
     <br>
     <br>
     <label for="personcapacity">Maximum Person Capacity:</label>
-    <input type="number" name="txtPersonCapacity" placeholder="Enter the person capacity" min="1" max="10" required />
+    <input type="number" name="txtPersonCapacity" placeholder="Capacity" min="1" max="10" required />
     <br>
     <br>
     <label for="price">Price (for a night):</label>
     <input type="number" name="txtPrice" placeholder="Enter the price" min="0" required />
+    <br />
+    <br />
+    <label for="upload-image">Add Photo</label>
+    <input type="file" name="Images" id="upload-image" multiple />
     <br>
     <button class="button" type="submit"><span> Add </span></button>
 </form>
