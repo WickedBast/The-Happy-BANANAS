@@ -46,7 +46,7 @@ namespace HB.Presentation.Models.Reservation
 
         public Guid Id { get; set; }
         public string Number { get; set; }
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
         public string Image { get; set; }
         public string Detail { get; set; }
         public UserMM User { get; set; }
@@ -69,13 +69,13 @@ namespace HB.Presentation.Models.Reservation
             Images = new List<string>();
         }
         public Guid Id { get; set; }
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
         public List<string> Images { get; set; }
         public UserMM User { get; set; }
         public string Slug { get; set; }
         public string Type { get; set; }
         public int NumberOfPerson { get; set; }
-        public decimal Cost { get; set; }
+        public int Cost { get; set; }
         public string Name { get; set; }
     }
 
