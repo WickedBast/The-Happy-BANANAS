@@ -27,57 +27,57 @@ namespace HB.Presentation.Controllers
 			
 			return View();
 		}
-		[HttpPost]
-		public async Task<IActionResult> Forgot(IFormCollection frm)
-		{
-			var Email = frm["txtEmail"].ToString();
+        [HttpPost]
+        public IActionResult Forgot(IFormCollection frm)
+        {
+            var Email = frm["txtEmail"].ToString();
 
-			if (string.IsNullOrEmpty(Email))
-			{
-				TempData["Info"] = "Lütfen bütün alanları doldurun.";
-				return RedirectToAction("Index", "ForgotPassword");
-			}
-			else if (!Email.ToString().IsValidEmailAddress())
-			{
-				TempData["Info"] = "Lütfen geçerli bir e-posta adresi girin.";
-				return RedirectToAction("Index", "ForgotPassword");
-			}
-			else
-			{
-				var user = userRepo.FirstOrDefaultBy(x => x.Email == Email);
-				if (user != null)
-				{
-					var claims = new List<Claim>
-					{
-						new Claim("Email", user.Email)
-					};
+            if (string.IsNullOrEmpty(Email))
+            {
+                TempData["Info"] = "Lütfen bütün alanları doldurun.";
+                return RedirectToAction("Index", "ForgotPassword");
+            }
+            else if (!Email.ToString().IsValidEmailAddress())
+            {
+                TempData["Info"] = "Lütfen geçerli bir e-posta adresi girin.";
+                return RedirectToAction("Index", "ForgotPassword");
+            }
+            else
+            {
+                var user = userRepo.FirstOrDefaultBy(x => x.Email == Email);
+                if (user != null)
+                {
+                    var claims = new List<Claim>
+                    {
+                        new Claim("Email", user.Email)
+                    };
 
-					var newPassword = new Cryptography().GenerateKey(8, false);
-					user.Password = new Cryptography().EncryptString(newPassword); ;
-					userRepo.Update(user);						
-						
-					var message = new MimeMessage();
-					message.From.Add(new MailboxAddress("New Password", "alpnce@gmail.com"));
-					message.To.Add(new MailboxAddress(user.Name, user.Email));
-					message.Subject = "Temporary Password";
-					message.Body = new TextPart("plain")
-					{
-						Text = "Tekrar giriş yapabilmeniz için geçici şifreniz: " + newPassword
-					};
-					using (var client = new SmtpClient())
-					{
-						client.Connect("smtp.gmail.com", 587, false);
-						client.Authenticate("hotelstar43@gmail.com", "happyBananas");
-						client.Send(message);
-						client.Disconnect(true);
-					}
-					
-				}
-			}
-			TempData["Info"] = "Mailiniz gönderilmiştir.";
-			return RedirectToAction("Index", "Login");
+                    var newPassword = new Cryptography().GenerateKey(8, false);
+                    user.Password = new Cryptography().EncryptString(newPassword); ;
+                    userRepo.Update(user);
 
-		}
+                    var message = new MimeMessage();
+                    message.From.Add(new MailboxAddress("New Password", "alpnce@gmail.com"));
+                    message.To.Add(new MailboxAddress(user.Name, user.Email));
+                    message.Subject = "Temporary Password";
+                    message.Body = new TextPart("plain")
+                    {
+                        Text = "Tekrar giriş yapabilmeniz için geçici şifreniz: " + newPassword
+                    };
+                    using (var client = new SmtpClient())
+                    {
+                        client.Connect("smtp.gmail.com", 587, false);
+                        client.Authenticate("hotelstar43@gmail.com", "happyBananas");
+                        client.Send(message);
+                        client.Disconnect(true);
+                    }
 
-	}
+                }
+            }
+            TempData["Info"] = "Mailiniz gönderilmiştir.";
+            return RedirectToAction("Index", "Login");
+
+        }
+
+    }
 }
