@@ -30,7 +30,7 @@ namespace HB.Presentation.Models.Comment
         public Guid Id { get; set; }
         public DateTime CreateDate { get; set; }
         public string Explanation { get; set; }
-        public Guid ReservationID { get; set; }
+        public string PNRNumber{ get; set; }
         public UserMM User { get; set; }
         public decimal RateAVG { get; set; }
         public RoomMM Room { get; set; }
