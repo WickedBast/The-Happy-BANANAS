@@ -42,4 +42,8 @@
     <ProjectReference Include="..\HB.Repository\HB.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\rooms\" />
+  </ItemGroup>
+
 </Project>
