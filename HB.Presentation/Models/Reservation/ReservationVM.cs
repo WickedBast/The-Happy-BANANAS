@@ -66,11 +66,11 @@ namespace HB.Presentation.Models.Reservation
         public ReservationDetailMM()
         {
             User = new UserMM();
-            Images = new List<string>();
+            
         }
         public Guid Id { get; set; }
         public DateTime? CreateDate { get; set; }
-        public List<string> Images { get; set; }
+        public string RoomImage { get; set; }
         public UserMM User { get; set; }
         public string Slug { get; set; }
         public string Type { get; set; }
