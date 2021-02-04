@@ -48,4 +48,8 @@
     <ProjectReference Include="..\HB.Mapping\HB.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
