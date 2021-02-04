@@ -32,6 +32,9 @@ namespace HB.DAL.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("PNRNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<decimal>("RateGiven")
                         .HasColumnType("decimal(18,1)");
 
