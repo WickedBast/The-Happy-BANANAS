@@ -49,7 +49,7 @@ namespace HB.Presentation.Controllers
                     string NewFileName = Guid.NewGuid().ToString();
                     if (Extension == ".jpg" || Extension == ".png" || Extension == ".jfif")
                     {
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", NewFileName + Extension);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/rooms", NewFileName + Extension);
                         using (var fileSteam = new FileStream(filePath, FileMode.Create))
                         {
                             await Image.CopyToAsync(fileSteam);
@@ -80,12 +80,6 @@ namespace HB.Presentation.Controllers
                 TempData["Info"] = RoomNumber + " numaralı oda daha önce eklenmiştir.";
                 return RedirectToAction("Index", "RoomAdd");
             }
-
-            //else if (RoomNumber)
-            //{
-
-            //}
-
 
             else
             {
