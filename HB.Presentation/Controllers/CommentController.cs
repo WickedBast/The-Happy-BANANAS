@@ -66,6 +66,8 @@ namespace HB.Presentation.Controllers
 
 			var user = userRepo.FirstOrDefaultBy(x => x.Id == Id);
 
+			var res = reservationRepo.FirstOrDefaultBy(x => x.Id == Id);
+
 			var pnr = reservationRepo.FirstOrDefaultBy(x => x.PNRNumber == pnrNo);
 
 			if (!(User.Identity.IsAuthenticated))
@@ -89,6 +91,7 @@ namespace HB.Presentation.Controllers
 			{
 				commentRepo.Add(new Comment
 				{
+					ReservationID = res.Id,
 					PNRNumber = pnrNo,
 					CommentText = comment,
 					RateGiven = decimal.Parse(rateGiven) / (10),
