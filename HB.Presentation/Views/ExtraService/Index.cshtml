@@ -34,7 +34,7 @@
 
     <form name="myForm" action="@Url.Action("ExtraService","ExtraService")" method="post">
         <label for="servicetype">Service Type:</label>
-        <select name="txtServiceType" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
+        <select id="servicetype" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
             <option value="Spa">Spa</option>
             <option value="Hamam">Hamam</option>
             <option value="Restaurant">Restaurant</option>
@@ -43,7 +43,7 @@
         <br>
         <br>
         <label for="numperson">Number of Person:</label>
-        <select name="txtNumberOfPerson" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
+        <select id="numperson" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -53,18 +53,18 @@
         <br>
         <p>
             Date:
-            <input value="Date:" type="date" name="txtDate" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
+            <input value="Date:" type="date" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
             <br>
         </p>
         <br>
         <p>
             Time:
-            <input value="Time:" name="txtTime" type="time" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
+            <input value="Time:" type="time" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
             <br>
         </p>
         <br>
         <label for="pnrnumber">PNR Number:</label>
-        <input type="text" name="txtPnrNo" placeholder="Enter PNR number" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required><br>
+        <input type="text" id="pnrnumber" name="txtPNRNumber" placeholder="Enter PNR number" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required><br>
         <br>
         <button type="submit" class="button" action="@Url.Action("Index","Payment")"><span> Search </span></button>
     </form>
