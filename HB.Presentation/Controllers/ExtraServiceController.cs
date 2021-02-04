@@ -67,7 +67,7 @@ namespace HB.Presentation.Controllers
             //}
             else if (reservation == null)
             {
-                TempData["Info"] = "PNR numaranız rezarvasyonunzla eşleşmemektedir.";
+                TempData["Info"] = "PNR numaranız rezarvasyonunuzla eşleşmemektedir.";
                 return RedirectToAction("Index", "ExtraService");
             }
             else
