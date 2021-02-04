@@ -89,7 +89,7 @@ namespace HB.Presentation.Controllers
                 CreateDate = x.CreateDate,                
                 Cost = x.Price,
                 Type = x.Type,
-                //RoomImage = x.RoomImages.Select(x => x.Image).FirstOrDefault()
+                RoomImage = x.RoomImages.Select(x => x.Image).FirstOrDefault()
                 //RoomImage = images
 
             }).ToList();
@@ -156,13 +156,6 @@ namespace HB.Presentation.Controllers
             }
             TempData["Info"] = "Ödeme sayfasına yönlendiriliyorsunuz";
             return RedirectToAction("Index", "Payment");
-        }
-
-        public IActionResult Cancel(IFormCollection frm, Reservation res)
-        {
-            reservationRepo.Delete(res);
-            TempData["Info"] = "Rezervasyonunuz başarıyla silindi.";
-            return RedirectToAction("Index", "History");
         }
 
     }
