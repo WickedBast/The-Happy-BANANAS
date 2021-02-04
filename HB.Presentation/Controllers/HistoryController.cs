@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HB.Entity.Application;
 using HB.Presentation.Code;
 using HB.Presentation.Models.Reservation;
 using HB.Repository.Interface.Application;
@@ -46,6 +47,13 @@ namespace HB.Presentation.Controllers
 			}).ToList();
 
 			return View(result);
+		}
+
+		public IActionResult Cancel(Reservation res)
+		{
+			reservationRepo.Delete(res);
+			TempData["Info"] = "Rezervasyonunuz başarıyla silindi.";
+			return RedirectToAction("Index", "History");
 		}
 	}
 }
