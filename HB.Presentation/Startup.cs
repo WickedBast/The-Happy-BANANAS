@@ -163,6 +163,12 @@ namespace HB.Presentation
                     );
 
                 routes.MapRoute(
+                    name: "addExtraService",
+                    template: "/addExtraService",
+                    defaults: new { controller = "ExtraServiceAdd", action = "Index"}
+                    );
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
