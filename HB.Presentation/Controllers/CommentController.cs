@@ -60,7 +60,7 @@ namespace HB.Presentation.Controllers
 		[HttpPost]
 		public IActionResult Comment(IFormCollection frm, Guid Id)
 		{
-			var pnrNo = frm["txtPNRNumber"];
+			var pnrNo = frm["txtPNRNumber"].ToString();
 			var comment = frm["txtComment"];
 			var rateGiven = frm["starRate"];			
 
