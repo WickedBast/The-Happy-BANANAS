@@ -33,7 +33,6 @@
         <div class="row">
             <div class="column">
                 <div class="card">
-                    <img src="@item.Image" alt="Jane" style="width:100%">
                     <div class="container">
                         <h2>Reservation Date: @item.StartDate</h2>
                         <p>Number of Room: @item.RoomCount</p>
@@ -41,8 +40,8 @@
                         <p>Number of Night: @item.Night</p>
                         <p>Total Cost: @item.Cost</p>
 
-
-                        <button class="button" action="@Url.Action("Cancel","Reservation")"><span>Cancel Reservation</span></button>
+                        
+                        <a href="@Url.Action("Cancel","Reservation")"> <button class="button" href="@Url.Action("Cancel","Reservation")"><span>Cancel Reservation</span></button> </a>
                     </div>
                 </div>
             </div>

@@ -2,27 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HB.Presentation.Code;
 using HB.Presentation.Models.Reservation;
 using HB.Repository.Interface.Application;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HB.Presentation.Controllers
 {
-	public class HistoryController : Controller
+	public class HistoryController : BaseController
 	{
 		public readonly IReservationRepository reservationRepo;
 		public readonly IRoomImageRepository imageRepo;
+		public readonly IUserRepository userRepo;
 
 		public HistoryController(
 			IReservationRepository reservationRepo,
+			IUserRepository userRepo,
 			IRoomImageRepository imageRepo)
         {
 			this.reservationRepo = reservationRepo;
 			this.imageRepo = imageRepo;
+			this.userRepo = userRepo;
         }
 		public IActionResult Index()
 		{
 			var result = new ReservationVM();
+
+			//var query = reservationRepo.GetById(CurrentUserID);
 
 			var query = reservationRepo.GetBy(x => true);
 

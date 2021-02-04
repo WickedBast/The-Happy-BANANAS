@@ -34,8 +34,7 @@ namespace HB.Presentation.Controllers
 
 			result.Item = query.OrderByDescending(x => x.CreateDate).Take(10).Select(x => new RoomMM 
 			{
-				Id = x.Id,
-				CreateDate = x.CreateDate,
+				Id = x.Id,				
 				PersonCapacity = x.PersonCapacity,
 				Cost = x.Price,
 				Type = x.Type,

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HB.DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20210202074934_Changes")]
-    partial class Changes
+    [Migration("20210203235339_InitDB")]
+    partial class InitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,9 @@ namespace HB.DAL.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("FullName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PNRNumber")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<decimal>("RateGiven")
@@ -187,6 +190,9 @@ namespace HB.DAL.Migrations
                     b.Property<bool>("IsFull")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<int>("PersonCapacity")
                         .HasColumnType("int");
 
@@ -197,6 +203,9 @@ namespace HB.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RoomNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Slug")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Type")
@@ -298,7 +307,7 @@ namespace HB.DAL.Migrations
             modelBuilder.Entity("HB.Entity.Application.ExtraService", b =>
                 {
                     b.HasOne("HB.Entity.Application.User", "User")
-                        .WithMany("ExtraServices")
+                        .WithMany("ExtraService")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

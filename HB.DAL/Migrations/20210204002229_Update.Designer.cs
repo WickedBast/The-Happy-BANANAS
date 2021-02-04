@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HB.DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20210203165533_Update2")]
-    partial class Update2
+    [Migration("20210204002229_Update")]
+    partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,9 @@ namespace HB.DAL.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("FullName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PNRNumber")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<decimal>("RateGiven")
@@ -72,8 +75,8 @@ namespace HB.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<decimal>("Cost")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime(6)");

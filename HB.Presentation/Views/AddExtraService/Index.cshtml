@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "AddExtraService";
+}
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+    <title>Add Extra Service</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/General.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+    <center>
+        <h2>Add Extra Service</h2>
+        <br>
+        <br>
+    </center>
+
+    @if (TempData["Info"] != null)
+    {
+        <p class="alert-light"> @TempData["Info"] <span class="close"></span> </p>
+    }
+
+
+    <form name="myForm" action="@Url.Action("AddExtraService","AddExtraService")" method="post" required>
+        <label for="servicetype">Service Type:</label>
+        <select name="txtServiceType" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
+            <option value="Spa">Spa</option>
+            <option value="Hamam">Hamam</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="IndoorPool">Indoor Pool</option>
+        </select>
+        <br>
+        <br>
+        <label for="numperson">Maximum Person Capacity:</label>
+        <select name="txtNumberOfPerson" style="width:230px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <br />
+        <br />
+        <label for="quota">Quota:</label>
+        <input type="number" name="txtQuota" placeholder="Enter the Quota" min="0" style="width:160px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required />
+        <br>
+        <br>
+        <label for="price">Price:</label>
+        <input type="number" name="txtPrice" placeholder="Enter the price" min="0" style="width:160px;height:30px;border-radius:7%;background-color:lavender;color:indigo" required />
+        <button class="button" type="submit"><span> Add </span></button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>

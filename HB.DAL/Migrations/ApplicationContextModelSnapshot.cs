@@ -32,6 +32,9 @@ namespace HB.DAL.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("PNRNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<decimal>("RateGiven")
                         .HasColumnType("decimal(18,1)");
 
@@ -70,8 +73,8 @@ namespace HB.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<decimal>("Cost")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime(6)");

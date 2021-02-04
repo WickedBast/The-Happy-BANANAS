@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HB.Entity.Application;
 using HB.Presentation.Code;
 using HB.Presentation.Models.Comment;
 using HB.Repository.Interface.Application;
@@ -14,13 +15,16 @@ namespace HB.Presentation.Controllers
 	{
 		public readonly IUserRepository userRepo;
 		public readonly ICommentRepository commentRepo;
+		public readonly IReservationRepository reservationRepo;
 
 		public CommentController(
 			IUserRepository userRepo,
-			ICommentRepository commentRepo)
+			ICommentRepository commentRepo,
+			IReservationRepository reservationRepo)
 		{
 			this.userRepo = userRepo;
 			this.commentRepo = commentRepo;
+			this.reservationRepo = reservationRepo;
 		}
 
 		public IActionResult Index()
@@ -32,7 +36,7 @@ namespace HB.Presentation.Controllers
 			result.Items = query.OrderByDescending(x => x.CreateDate).Take(100).Select(x => new CommentMM
 			{
 				Id = x.Id,
-				ReservationID = x.ReservationID,
+				PNRNumber = x.PNRNumber,
 				RateAVG = x.RateGiven,
 				CreateDate = x.CreateDate.Value,
 				Explanation = x.CommentText,
@@ -56,13 +60,15 @@ namespace HB.Presentation.Controllers
 		[HttpPost]
 		public IActionResult Comment(IFormCollection frm, Guid Id)
 		{
-			var resID = frm["txtReservationID"];
+			var pnrNo = frm["txtPNRNumber"];
 			var comment = frm["txtComment"];
-			var rateGiven = frm["starRate"];
-			var roomType = frm["roomtype"];
+			var rateGiven = frm["starRate"];			
 
 			var user = userRepo.FirstOrDefaultBy(x => x.Id == Id);
-            if (!(User.Identity.IsAuthenticated))
+
+			var pnr = reservationRepo.FirstOrDefaultBy(x => x.PNRNumber == pnrNo);
+
+			if (!(User.Identity.IsAuthenticated))
             {
 				TempData["Info"] = "Yorum yapabilmek için giriş yapmalısınız..";
 				return RedirectToAction("Index", "Comment");
@@ -73,16 +79,17 @@ namespace HB.Presentation.Controllers
 				TempData["Info"] = "Lütfen yorum yapacağınız alanı boş bırakmayın";
 				return RedirectToAction("Index", "Comment");
 			}
-			else if (string.IsNullOrWhiteSpace(rateGiven))
+			//else if (string.IsNullOrWhiteSpace(rateGiven))
+			//{
+			//	TempData["Info"] = "Lütfen puanlama yapınız ";
+			//	return RedirectToAction("Index", "Comment");
+			//}
+
+			else if(pnr != null)
 			{
-				TempData["Info"] = "Lütfen puanlama yapınız ";
-				return RedirectToAction("Index", "Comment");
-			}
-			else
-			{
-				commentRepo.Add(new Entity.Application.Comment
+				commentRepo.Add(new Comment
 				{
-					ReservationID = Guid.Parse(resID),
+					PNRNumber = pnrNo,
 					CommentText = comment,
 					RateGiven = decimal.Parse(rateGiven) / (10),
 					UserID = CurrentUserID,
@@ -90,6 +97,11 @@ namespace HB.Presentation.Controllers
 				});
 
 				TempData["Info"] = "Yorum işleminiz başarıyla sonuçlanmıştır.";
+				return RedirectToAction("Index", "Comment");
+            }
+            else
+            {
+				TempData["Info"] = "Hatalı işlem yaptınız.";
 				return RedirectToAction("Index", "Comment");
 			}
 		}

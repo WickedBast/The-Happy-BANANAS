@@ -19,7 +19,9 @@ namespace HB.DAL.Migrations
                     Type = table.Column<string>(nullable: true),
                     IsFull = table.Column<bool>(nullable: false),
                     PersonCapacity = table.Column<int>(nullable: false),
-                    Price = table.Column<int>(nullable: false)
+                    Price = table.Column<int>(nullable: false),
+                    Slug = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -143,9 +145,10 @@ namespace HB.DAL.Migrations
                     CreateDate = table.Column<DateTime>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: true),
                     RecordStatus = table.Column<int>(nullable: false),
+                    PNRNumber = table.Column<string>(nullable: true),
                     ReservationID = table.Column<Guid>(nullable: false),
                     CommentText = table.Column<string>(nullable: true),
-                    UserID = table.Column<Guid>(nullable: true),
+                    UserID = table.Column<Guid>(nullable: false),
                     RoomNumber = table.Column<Guid>(nullable: false),
                     FullName = table.Column<string>(nullable: true),
                     RateGiven = table.Column<decimal>(type: "decimal(18,1)", nullable: false),

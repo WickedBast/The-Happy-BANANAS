@@ -40,14 +40,14 @@ namespace HB.Presentation.Controllers
             var numberOfPerson = frm["txtNumberOfPerson"];
             var date = frm["txtDate"];
             var time = frm["txtTime"];
-            var pnrNo = frm["txtPnrNo"];
+            var pnrNo = frm["txtPnrNo"].ToString();
             //var quota = -1;
 
             var reservation = reservationRepo.FirstOrDefaultBy(x => x.PNRNumber == pnrNo);
 
-            var dateConverted = DateTime.Parse(date);
+            //var dateConverted = DateTime.Parse(date);
             var today = DateTime.Today;
-            int result = DateTime.Compare(dateConverted, today);
+            //int result = DateTime.Compare(dateConverted, today);
 
             if (
                 string.IsNullOrWhiteSpace(serviceType) ||
@@ -60,11 +60,11 @@ namespace HB.Presentation.Controllers
                 TempData["Info"] = "Lütfen bütün alanları doldurun.";
                 return RedirectToAction("Index", "ExtraService");
             }
-            else if (result < 0)
-            {
-                TempData["Info"] = "Geçmiş tarih seçemezsiniz.";
-                return RedirectToAction("Index", "ExtraService");
-            }
+            //else if (result < 0)
+            //{
+            //    TempData["Info"] = "Geçmiş tarih seçemezsiniz.";
+            //    return RedirectToAction("Index", "ExtraService");
+            //}
             else if (reservation == null)
             {
                 TempData["Info"] = "PNR numaranız rezarvasyonunzla eşleşmemektedir.";

@@ -6,6 +6,8 @@ namespace HB.Entity.Application
 {
     public class Comment : BaseEntity
     {
+        public string PNRNumber { get; set; }
+
         public Guid ReservationID { get; set; }
 
         public string CommentText { get; set; }

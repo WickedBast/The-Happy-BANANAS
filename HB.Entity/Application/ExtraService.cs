@@ -12,7 +12,7 @@ namespace HB.Entity.Application
 
         public string PNRNumber { get; set; }
 
-        public decimal Cost { get; set; }
+        public int Cost { get; set; }
 
         public int Quota { get; set; }
 

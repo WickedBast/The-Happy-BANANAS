@@ -52,7 +52,7 @@ namespace HB.Presentation.Controllers
             var expYear = frm["txtExpyear"];
 
             var reservation = reservationRepo.FirstOrDefaultBy(x => x.Id == CurrentUserID);
-            var total = reservation.Room.Price;
+            
 
             if (
                 string.IsNullOrWhiteSpace(fullname) ||
@@ -83,18 +83,16 @@ namespace HB.Presentation.Controllers
             }
             else
             {
-                //var PNRCode = new Cryptography().GenerateKey(6, true);
-                var PNRCode = reservation.PNRNumber;
+                var PNRCode = new Cryptography().GenerateKey(6, true);
                 var user = userRepo.FirstOrDefaultBy(x => x.Id == CurrentUserID);
-                reservation.IsPaid = true;
-
+                
                 var message = new MimeMessage();
                 message.From.Add(new MailboxAddress("PNRNumber", "alpnce@gmail.com"));
                 message.To.Add(new MailboxAddress(user.Name, user.Email));
                 message.Subject = "PNR Number:";
                 message.Body = new TextPart("plain")
                 {
-                    Text = "Rezervasyonunuz alınmıştır. Rezervasyonunuz için PNR Numaranız:  " + reservation.PNRNumber
+                    Text = "Rezervasyonunuz alınmıştır. Rezervasyonunuz için PNR Numaranız:  " + PNRCode
                 };
                 using (var client = new SmtpClient())
                 {
@@ -103,9 +101,27 @@ namespace HB.Presentation.Controllers
                     client.Send(message);
                     client.Disconnect(true);
                 }
+
+
+                reservationRepo.Add(new Reservation
+                {
+                    UserID = CurrentUserID,
+                    //StartDate = ,
+                    //EndDate = ,
+                    //RoomNumber = ,
+                    //NumberOfPerson = ,
+                    //RoomCount = ,
+                    PNRNumber = PNRCode,
+                    IsPaid = true,
+                    //Night = 
+
+                });
+
+
+                TempData["Info"] = "Satın alım işleminiz gerçekleştirilmiştir.";
+                return RedirectToAction("Index", "Home");
             }
-            TempData["Info"] = "Satın alım işleminiz gerçekleştirilmiştir.";
-            return RedirectToAction("Index", "Home");
+            
 
         }
     }

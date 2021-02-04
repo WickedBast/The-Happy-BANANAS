@@ -7,21 +7,20 @@ namespace HB.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "Role",
-                table: "User",
+                name: "Cost",
+                table: "ExtraService",
                 nullable: false,
-                oldClrType: typeof(string),
-                oldType: "longtext CHARACTER SET utf8mb4",
-                oldNullable: true);
+                oldClrType: typeof(decimal),
+                oldType: "decimal(65,30)");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "Role",
-                table: "User",
-                type: "longtext CHARACTER SET utf8mb4",
-                nullable: true,
+            migrationBuilder.AlterColumn<decimal>(
+                name: "Cost",
+                table: "ExtraService",
+                type: "decimal(65,30)",
+                nullable: false,
                 oldClrType: typeof(int));
         }
     }
