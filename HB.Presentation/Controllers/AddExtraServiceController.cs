@@ -27,35 +27,35 @@ namespace HB.Presentation.Controllers
 		{
 			return View();
 		}
-		[Authorize]
-		public async Task<IActionResult> AddExtraService(IFormCollection frm)
-		{
-			var serviceType = frm["txtServiceType"];
-			var numberOfPerson = frm["txtNumberOfPerson"];
-			var prize = frm["txtPrize"];
-			var quota = frm["txtQuota"];
+        [Authorize]
+        public IActionResult AddExtraService(IFormCollection frm)
+        {
+            var serviceType = frm["txtServiceType"];
+            var numberOfPerson = frm["txtNumberOfPerson"];
+            var price = frm["txtPrice"];
+            var quota = frm["txtQuota"];
 
-			if (string.IsNullOrWhiteSpace(serviceType) ||
-				 string.IsNullOrWhiteSpace(numberOfPerson) ||
-				 string.IsNullOrWhiteSpace(prize) ||
-				 string.IsNullOrWhiteSpace(quota))
-			{
-				TempData["Info"] = "Lütfen bütün alanları doldurun.";
-				return RedirectToAction("Index", "RoomAdd");
-			}
-			else
-			{
-				extraServiceRepo.Add(new ExtraService
-				{
-					ServiceType = serviceType,
-					NumberOfPerson = Int32.Parse(numberOfPerson),
-					Cost = Int32.Parse(prize),
-					Quota = Int32.Parse(quota)
+            if (string.IsNullOrWhiteSpace(serviceType) ||
+                 string.IsNullOrWhiteSpace(numberOfPerson) ||
+                 string.IsNullOrWhiteSpace(price) ||
+                 string.IsNullOrWhiteSpace(quota))
+            {
+                TempData["Info"] = "Lütfen bütün alanları doldurun.";
+                return RedirectToAction("Index", "ExtraServiceAdd");
+            }
+            else
+            {
+                extraServiceRepo.Add(new ExtraService
+                {
+                    ServiceType = serviceType,
+                    NumberOfPerson = Int32.Parse(numberOfPerson),
+                    Cost = Int32.Parse(price),
+                    Quota = Int32.Parse(quota)
 
-				});
-				TempData["Info"] = "Ekstra servis kayıt işleminiz gerçekleştirilmiştir.";
-				return RedirectToAction("Index", "ExtraServiceAdd");
-			}
-		}
-	}
+                });
+                TempData["Info"] = "Ekstra servis kayıt işleminiz gerçekleştirilmiştir.";
+                return RedirectToAction("Index", "ExtraServiceAdd");
+            }
+        }
+    }
 }
