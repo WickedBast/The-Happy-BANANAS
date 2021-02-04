@@ -73,8 +73,8 @@ namespace HB.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<decimal>("Cost")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime(6)");
